@@ -5,9 +5,6 @@ import { Container, Wrapper, Main, Location, Button } from './styles';
 import { ReactComponent as LogoImg } from '../../assets/logo.svg';
 import { ReactComponent as ArrowLeftImg } from '../../assets/arrow-left.svg';
 
-// import { ReactComponent as LandingImg } from '../../assets/landing.svg';
-// import { ReactComponent as MarkerImg } from '../../assets/marker.svg';
-
 const Home: React.FC = () => {
   return (
     <>
@@ -25,7 +22,7 @@ const Home: React.FC = () => {
             <span>Paraná</span>
           </Location>
 
-          <Button to="/">
+          <Button to="/app">
             <ArrowLeftImg />
           </Button>
         </Wrapper>
