@@ -82,7 +82,7 @@ export const Button = styled(Link)`
     background-color: ${colors.blue};
 
     svg {
-      fill: ${colors.mediumBlue};
+      fill: ${colors.midBlue};
     }
   }
 `;

@@ -13,6 +13,7 @@ export default {
   brand: '#1a90e8',
   yellow: '#FFD666',
   blue: '#96FEFF',
-  mediumBlue: '#15C3D6',
+  midBlue: '#15C3D6',
+  lightBlue: '#17D6EB',
   marrom: '#8D734B',
 };
