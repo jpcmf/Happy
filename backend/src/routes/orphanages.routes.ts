@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import OrphanagesRepository from '../repositories/OrphanagesRepository';
+import CreateOrphanageService from '../services/CreateOrphanageService';
 
 const orphanagesRouter = Router();
 const orphanagesRepository = new OrphanagesRepository();
@@ -12,25 +13,31 @@ orphanagesRouter.get('/', (request, response) => {
 });
 
 orphanagesRouter.post('/', (request, response) => {
-  const {
-    name,
-    latitude,
-    longitude,
-    about,
-    instructions,
-    open_on_weekends,
-  } = request.body;
+  try {
+    const {
+      name,
+      latitude,
+      longitude,
+      about,
+      instructions,
+      open_on_weekends,
+    } = request.body;
 
-  const orphanage = orphanagesRepository.create({
-    name,
-    latitude,
-    longitude,
-    about,
-    instructions,
-    open_on_weekends,
-  });
+    const createOrphanage = new CreateOrphanageService(orphanagesRepository);
 
-  return response.json(orphanage);
+    const orphanage = createOrphanage.execute({
+      name,
+      latitude,
+      longitude,
+      about,
+      instructions,
+      open_on_weekends,
+    });
+
+    return response.json(orphanage);
+  } catch (err) {
+    return response.status(400).json({ error: err.message });
+  }
 });
 
 export default orphanagesRouter;
