@@ -1,4 +1,7 @@
+import 'reflect-metadata';
+
 import express from 'express';
+import './database/connection';
 
 import routes from './routes';
 
@@ -19,9 +22,9 @@ function logRequests(request, response, next) {
 
 app.use(logRequests);
 
-app.get('/users', (request, response) =>
-  response.json({ message: 'Olá mundo' }),
-);
+// app.get('/users', (request, response) =>
+//   response.json({ message: 'Olá mundo' }),
+// );
 
 app.listen(3333, () => {
   // eslint-disable-next-line no-console
