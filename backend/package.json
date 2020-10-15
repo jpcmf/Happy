@@ -5,13 +5,18 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules --rs src/server.ts"
+    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules --rs src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.0",
+    "typeorm": "^0.2.28",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "eslint": "^7.11.0",
