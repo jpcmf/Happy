@@ -7,13 +7,20 @@ export default class createOrphanages1602700677077
       new Table({
         name: 'orphanages',
         columns: [
+          // {
+          //   name: 'id',
+          //   type: 'integer',
+          //   unsigned: true,
+          //   isPrimary: true,
+          //   isGenerated: true,
+          //   generationStrategy: 'increment',
+          // },
           {
             name: 'id',
-            type: 'integer',
-            unsigned: true,
+            type: 'varchar',
             isPrimary: true,
-            isGenerated: true,
-            generationStrategy: 'increment',
+            generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'name',
@@ -23,13 +30,13 @@ export default class createOrphanages1602700677077
             name: 'latitude',
             type: 'decimal',
             scale: 10,
-            precision: 2,
+            // precision: 2,
           },
           {
             name: 'longitude',
             type: 'decimal',
             scale: 10,
-            precision: 2,
+            // precision: 2,
           },
           {
             name: 'about',
@@ -38,6 +45,10 @@ export default class createOrphanages1602700677077
           {
             name: 'instructions',
             type: 'text',
+          },
+          {
+            name: 'opening_hours',
+            type: 'varchar',
           },
           {
             name: 'open_on_weekends',

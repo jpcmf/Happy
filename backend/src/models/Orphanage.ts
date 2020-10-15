@@ -1,36 +1,30 @@
-import { v4 as uuid } from 'uuid';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('orphanages')
 class Orphanege {
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column()
   name: string;
 
+  @Column()
   latitude: number;
 
+  @Column()
   longitude: number;
 
+  @Column()
   about: string;
 
+  @Column()
   instructions: string;
 
-  open_on_weekends: boolean;
+  @Column()
+  opening_hours: string;
 
-  constructor({
-    name,
-    latitude,
-    longitude,
-    about,
-    instructions,
-    open_on_weekends,
-  }: Omit<Orphanege, 'id'>) {
-    this.id = uuid();
-    this.name = name;
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.about = about;
-    this.instructions = instructions;
-    this.open_on_weekends = open_on_weekends;
-  }
+  @Column()
+  open_on_weekends: boolean;
 }
 
 export default Orphanege;
