@@ -8,7 +8,9 @@ const orphanagesRouter = Router();
 
 orphanagesRouter.get('/', async (request, response) => {
   const orphanagesRepository = getCustomRepository(OrphanagesRepository);
-  const orphanages = await orphanagesRepository.find();
+  const orphanages = await orphanagesRepository.find({
+    relations: ['images'],
+  });
 
   return response.json(orphanages);
 });
@@ -17,7 +19,9 @@ orphanagesRouter.get('/:id', async (request, response) => {
   const { id } = request.params;
   const orphanagesRepository = getCustomRepository(OrphanagesRepository);
 
-  const orphanage = await orphanagesRepository.findOneOrFail(id);
+  const orphanage = await orphanagesRepository.findOneOrFail(id, {
+    relations: ['images'],
+  });
 
   return response.json(orphanage);
 });
