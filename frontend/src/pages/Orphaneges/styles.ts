@@ -51,6 +51,39 @@ export const MapWrapper = styled.div`
   > div {
     z-index: 0;
   }
+
+  .map-popup {
+    .leaflet-popup-content-wrapper {
+      background-color: ${colors.white};
+      border-radius: 15px;
+      box-shadow: none;
+    }
+
+    .leaflet-popup-content {
+      align-items: center;
+      color: ${colors.darkBlue};
+      display: flex;
+      font-size: 18px;
+      font-weight: 700;
+      justify-content: space-between;
+      margin: 6px 8px 6px 15px;
+
+      a {
+        align-items: center;
+        background-color: ${colors.midBlue};
+        border-radius: 12px;
+        box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+      }
+    }
+
+    .leaflet-popup-tip-container {
+      display: none;
+    }
+  }
 `;
 
 export const Button = styled(Link)`

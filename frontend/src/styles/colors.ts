@@ -15,5 +15,6 @@ export default {
   blue: '#96FEFF',
   midBlue: '#15C3D6',
   lightBlue: '#17D6EB',
+  darkBlue: '#0089A5',
   marrom: '#8D734B',
 };
