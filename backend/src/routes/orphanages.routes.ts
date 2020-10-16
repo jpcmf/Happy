@@ -4,6 +4,8 @@ import { getCustomRepository } from 'typeorm';
 import OrphanagesRepository from '../repositories/OrphanagesRepository';
 import CreateOrphanageService from '../services/CreateOrphanageService';
 
+import orphanageView from '../views/orphanages_view';
+
 const orphanagesRouter = Router();
 
 orphanagesRouter.get('/', async (request, response) => {
@@ -12,7 +14,7 @@ orphanagesRouter.get('/', async (request, response) => {
     relations: ['images'],
   });
 
-  return response.json(orphanages);
+  return response.json(orphanageView.renderMany(orphanages));
 });
 
 orphanagesRouter.get('/:id', async (request, response) => {
@@ -23,7 +25,7 @@ orphanagesRouter.get('/:id', async (request, response) => {
     relations: ['images'],
   });
 
-  return response.json(orphanage);
+  return response.json(orphanageView.render(orphanage));
 });
 
 orphanagesRouter.post('/', async (request, response) => {
