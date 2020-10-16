@@ -10,17 +10,17 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-function logRequests(request, response, next) {
-  const { method, url } = request;
+// function logRequests(request, response, next) {
+//   const { method, url } = request;
 
-  const logLabel = `[${method.toUpperCase()}] ${url}`;
+//   const logLabel = `[${method.toUpperCase()}] ${url}`;
 
-  console.log(logLabel);
+//   console.log(logLabel);
 
-  return next();
-}
+//   return next();
+// }
 
-app.use(logRequests);
+// app.use(logRequests);
 
 // app.get('/users', (request, response) =>
 //   response.json({ message: 'Olá mundo' }),

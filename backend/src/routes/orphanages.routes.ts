@@ -35,6 +35,10 @@ orphanagesRouter.post('/', async (request, response) => {
     } = request.body;
 
     const createOrphanage = new CreateOrphanageService();
+    const requestImages = request.files as Express.Multer.File[];
+    const images = requestImages.map(image => {
+      return { path: image.filename };
+    });
 
     const orphanage = await createOrphanage.execute({
       name,
@@ -44,6 +48,7 @@ orphanagesRouter.post('/', async (request, response) => {
       instructions,
       opening_hours,
       open_on_weekends,
+      images,
     });
 
     return response.status(201).json(orphanage);
