@@ -4,6 +4,8 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 import Image from './Image';
@@ -39,6 +41,12 @@ class Orphanege {
   })
   @JoinColumn({ name: 'orphanage_id' })
   images: Image[];
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
 
 export default Orphanege;
