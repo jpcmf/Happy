@@ -24,8 +24,6 @@ orphanagesRouter.get('/:id', async (request, response) => {
 
 orphanagesRouter.post('/', async (request, response) => {
   try {
-    console.log(request.files);
-
     const {
       name,
       latitude,
