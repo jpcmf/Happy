@@ -10,6 +10,9 @@ interface Request {
   instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
+  images: {
+    path: string;
+  }[];
 }
 
 class CreateOrphanageService {
@@ -21,6 +24,7 @@ class CreateOrphanageService {
     instructions,
     opening_hours,
     open_on_weekends,
+    images,
   }: Request): Promise<Orphanege> {
     const orphanagesRepository = getCustomRepository(OrphanagesRepository);
 
@@ -32,6 +36,7 @@ class CreateOrphanageService {
       instructions,
       opening_hours,
       open_on_weekends,
+      images,
     });
 
     await orphanagesRepository.save(orphanage);
