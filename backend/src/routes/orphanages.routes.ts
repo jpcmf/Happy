@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
+import * as Yup from 'yup';
 
 import OrphanagesRepository from '../repositories/OrphanagesRepository';
 import CreateOrphanageService from '../services/CreateOrphanageService';
@@ -29,38 +30,60 @@ orphanagesRouter.get('/:id', async (request, response) => {
 });
 
 orphanagesRouter.post('/', async (request, response) => {
-  try {
-    const {
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-    } = request.body;
+  const {
+    name,
+    latitude,
+    longitude,
+    about,
+    instructions,
+    opening_hours,
+    open_on_weekends,
+  } = request.body;
 
-    const createOrphanage = new CreateOrphanageService();
-    const requestImages = request.files as Express.Multer.File[];
-    const images = requestImages.map(image => {
-      return { path: image.filename };
-    });
+  const createOrphanage = new CreateOrphanageService();
+  const requestImages = request.files as Express.Multer.File[];
+  const images = requestImages.map(image => {
+    return { path: image.filename };
+  });
 
-    const orphanage = await createOrphanage.execute({
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-      images,
-    });
+  const data = {
+    name,
+    latitude,
+    longitude,
+    about,
+    instructions,
+    opening_hours,
+    open_on_weekends,
+    images,
+  };
 
-    return response.status(201).json(orphanage);
-  } catch (err) {
-    return response.status(400).json({ error: err.message });
-  }
+  const schema = Yup.object().shape({
+    name: Yup.string().required(),
+    latitude: Yup.number().required(),
+    longitude: Yup.number().required(),
+    about: Yup.string().required().max(300),
+    instructions: Yup.string().required(),
+    opening_hours: Yup.string().required(),
+    open_on_weekends: Yup.boolean().required(),
+    images: Yup.array(
+      Yup.object().shape({
+        path: Yup.string().required(),
+      }),
+    ),
+  });
+
+  await schema.validate(data, {
+    abortEarly: false,
+  });
+
+  const orphanage = await createOrphanage.execute(data);
+
+  return response.status(201).json(orphanage);
+
+  // try {
+  // } catch (err) {
+  //   return response.status(400).json({ error: err.message });
+  // }
 });
 
 export default orphanagesRouter;
