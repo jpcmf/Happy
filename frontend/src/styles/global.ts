@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'leaflet/dist/leaflet.css';
 import colors from './colors';
 
 export default createGlobalStyle`
