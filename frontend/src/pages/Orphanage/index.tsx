@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiClock, FiInfo } from 'react-icons/fi';
 import { Map, Marker, TileLayer } from 'react-leaflet';
@@ -89,7 +90,7 @@ const Orphanage: React.FC = () => {
               </Map>
 
               <footer>
-                <a href="">Ver rotas no Google Maps</a>
+                <Link to="/">Ver rotas no Google Maps</Link>
               </footer>
             </div>
 
@@ -110,7 +111,9 @@ const Orphanage: React.FC = () => {
               </div>
               <div className="open-on-weekends">
                 <FiInfo size={32} color="#39CC83" />
-                Atendemos <br />
+                Atendemos
+{' '}
+<br />
                 fim de semana
               </div>
             </div>

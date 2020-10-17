@@ -11,7 +11,7 @@ import { Sidebar } from '../../components';
 
 const CreateOrphanage: React.FC = () => {
   return (
-    <Container id="page-create-orphanage">
+    <Container>
       <Sidebar />
 
       <main>

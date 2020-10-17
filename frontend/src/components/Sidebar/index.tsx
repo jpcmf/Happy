@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Aside } from './styles';
 
-import Image, { ReactComponent as MarkerImg } from '../../assets/marker.svg';
+import { ReactComponent as MarkerImg } from '../../assets/marker.svg';
 
 export default function Sidebar() {
   const { goBack } = useHistory();
