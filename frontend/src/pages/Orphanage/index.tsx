@@ -103,7 +103,11 @@ const Orphanage: React.FC = () => {
               <footer>
                 <a
                   target="_blank"
+<<<<<<< HEAD
                   rel="noopener noreferrer"
+=======
+                  rel="noreferrer"
+>>>>>>> main
                   href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}
                 >
                   Ver rotas no Google Maps
