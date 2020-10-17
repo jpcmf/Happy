@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import 'leaflet/dist/leaflet.css';
 import colors from './colors';
+import './animations.css';
 
 export default createGlobalStyle`
   * {

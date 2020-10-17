@@ -1,6 +1,6 @@
 export default {
   black: '#000',
-  danger: '#de3b3b',
+  danger: '#FF669D',
   dark: '#444',
   darkGrey: '#999',
   gray: '#EBF2F5',

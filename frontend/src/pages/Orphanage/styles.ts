@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -37,6 +38,11 @@ export const Container = styled.div`
         overflow: hidden;
         outline: none;
         opacity: 0.6;
+        transition: opacity 300ms ease;
+
+        &:hover {
+          opacity: 1;
+        }
 
         img {
           width: 100%;
@@ -129,7 +135,22 @@ export const Container = styled.div`
         div.open-on-weekends {
           background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
           border: 1px solid #a1e9c5;
-          color: #37c77f;
+
+          p {
+            color: #37c77f;
+          }
+
+          &--red {
+            background: linear-gradient(
+              154.16deg,
+              #fcf0f4 7.85%,
+              #ffffff 91.03%
+            );
+            border: 1px solid #ffbcd4;
+            p {
+              color: ${colors.danger};
+            }
+          }
         }
       }
 
