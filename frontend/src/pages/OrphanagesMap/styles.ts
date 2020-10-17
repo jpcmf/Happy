@@ -19,16 +19,22 @@ export const Aside = styled.aside`
   padding: 80px;
   width: 440px;
 
-  h2 {
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 42px;
-    margin-top: 64px;
-  }
+  header {
+    h2 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 42px;
+      margin-top: 64px;
+    }
 
-  p {
-    line-height: 28px;
-    margin-top: 24px;
+    p {
+      line-height: 28px;
+      margin-top: 24px;
+    }
+
+    svg {
+      animation: float 6s ease-in-out infinite;
+    }
   }
 
   footer {

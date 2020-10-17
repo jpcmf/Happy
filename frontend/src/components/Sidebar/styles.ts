@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Aside = styled.aside`
   align-items: center;
@@ -10,7 +11,7 @@ export const Aside = styled.aside`
   padding: 32px 24px;
   position: fixed;
 
-  img {
+  svg {
     width: 48px;
   }
 
@@ -37,4 +38,8 @@ export const Aside = styled.aside`
   footer button:hover {
     background: #17d6eb;
   }
+`;
+
+export const MarkerWrapper = styled(Link)`
+  animation: float 6s ease-in-out infinite;
 `;
