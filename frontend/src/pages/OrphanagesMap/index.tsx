@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiPlus } from 'react-icons/fi';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -9,7 +9,25 @@ import { Container, Aside, MapWrapper, Button } from './styles';
 
 import { ReactComponent as MarkerImg } from '../../assets/marker.svg';
 
+import api from '../../services/api';
+
+interface Orphanage {
+  id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
 const Orphanages: React.FC = () => {
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
+
+  useEffect(() => {
+    api.get('/orphanages').then((response) => {
+      const { data } = response;
+      setOrphanages(data);
+    });
+  }, []);
+
   return (
     <Container>
       <Aside>
@@ -38,19 +56,25 @@ const Orphanages: React.FC = () => {
           <TileLayer
             url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
           />
-          <Marker icon={mapIcon} position={[-25.4609276, -49.2740054]}>
-            <Popup
-              closeButton={false}
-              minWidth={240}
-              minHeigh={240}
-              className="map-popup"
+          {orphanages.map((orphanage) => (
+            <Marker
+              icon={mapIcon}
+              position={[orphanage.latitude, orphanage.longitude]}
+              key={orphanage.id}
             >
-              Orfanato Bacaninha
-              <Link to="/orphanages/1">
-                <FiArrowRight size={20} color={colors.white} />
-              </Link>
-            </Popup>
-          </Marker>
+              <Popup
+                closeButton={false}
+                minWidth={240}
+                minHeigh={240}
+                className="map-popup"
+              >
+                {orphanage.name}
+                <Link to={`/orphanages/${orphanage.id}`}>
+                  <FiArrowRight size={20} color={colors.white} />
+                </Link>
+              </Popup>
+            </Marker>
+          ))}
         </Map>
       </MapWrapper>
 
