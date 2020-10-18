@@ -83,13 +83,33 @@ export const Container = styled.div`
         line-height: 28px;
       }
 
+      .images-container {
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: repeat(5, 1fr);
+
+        img {
+          border-radius: 20px;
+          height: 96px;
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+
       .new-image {
-        width: 100%;
-        height: 64px;
+        align-items: center;
         background: #f5f8fa;
-        border: 1px dashed #96d2f0;
         border-radius: 20px;
+        border: 1px dashed #96d2f0;
         cursor: pointer;
+        display: flex;
+        height: 96px;
+        justify-content: center;
+        margin: 0;
+      }
+
+      input[type='file'] {
+        display: none;
       }
 
       .button-select {

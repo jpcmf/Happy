@@ -1,10 +1,9 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState, ChangeEvent } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-// import Toggle from 'react-toggle';
 
 import mapIcon from 'utils/mapIcon';
 import getValidationErrors from 'utils/getValidationsErrors';
@@ -37,6 +36,8 @@ const CreateOrphanage: React.FC = () => {
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const formRef = useRef<FormHandles>(null);
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
+  const [images, setImages] = useState<File[]>([]);
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
 
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
@@ -47,68 +48,82 @@ const CreateOrphanage: React.FC = () => {
     });
   }
 
-  const handleSubmit = useCallback(async (data: OrphanageFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: OrphanageFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required(
-          'O campo Nome é de preenchimento obrigatório.',
-        ),
-        about: Yup.string().required(
-          'O campo Sobre é de preenchimento obrigatório.',
-        ),
-        instructions: Yup.string().required(
-          'O campo Instruções é de preenchimento obrigatório.',
-        ),
-        opening_hours: Yup.string().required(
-          'O campo Horário das visitas é de preenchimento obrigatório.',
-        ),
-        open_on_weekends: Yup.boolean().nullable(),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required(
+            'O campo Nome é de preenchimento obrigatório.',
+          ),
+          about: Yup.string().required(
+            'O campo Sobre é de preenchimento obrigatório.',
+          ),
+          instructions: Yup.string().required(
+            'O campo Instruções é de preenchimento obrigatório.',
+          ),
+          opening_hours: Yup.string().required(
+            'O campo Horário das visitas é de preenchimento obrigatório.',
+          ),
+          open_on_weekends: Yup.boolean().nullable(),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      console.log(data);
+        console.log(data);
 
-      const { latitude, longitude } = position;
+        const { latitude, longitude } = position;
 
-      const {
-        name,
-        about,
-        instructions,
-        opening_hours,
-        open_on_weekends,
-      } = data;
+        const dataForm = new FormData();
 
-      const formData = {
-        latitude,
-        longitude,
-        name,
-        about,
-        instructions,
-        opening_hours,
-        open_on_weekends,
-      };
+        dataForm.append('name', data.name);
+        dataForm.append('about', data.about);
+        dataForm.append('latitude', String(latitude));
+        dataForm.append('longitude', String(longitude));
+        dataForm.append('instructions', data.instructions);
+        dataForm.append('opening_hours', data.opening_hours);
+        dataForm.append('open_on_weekends', String(open_on_weekends));
+        images.forEach((image) => {
+          dataForm.append('images', image);
+        });
 
-      const response = await api.post('/orphanages', formData);
+        alert('Cadastro com sucesso!');
 
-      console.log(response);
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        await api.post('/orphanages', dataForm);
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
+        }
+        console.log(err);
       }
-      console.log(err);
-    }
-  }, []);
+    },
+    [images, open_on_weekends, position],
+  );
 
-  function handleToggle(e: boolean) {
-    console.log(!!e);
-    setOpenOnWeekends(!e);
+  function handleToggle(event: boolean) {
+    console.log(!!event);
+    setOpenOnWeekends(!event);
+  }
+
+  function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
+    if (!event.target.files) return;
+
+    console.log(event.target.files);
+
+    const selectedImages = Array.from(event.target.files);
+
+    setImages(selectedImages);
+
+    const selectedImagesPreview = selectedImages.map((image) => {
+      return URL.createObjectURL(image);
+    });
+
+    setPreviewImages(selectedImagesPreview);
   }
 
   return (
@@ -159,11 +174,22 @@ const CreateOrphanage: React.FC = () => {
             <div className="input-block">
               <label htmlFor="images">Fotos</label>
 
-              <div className="uploaded-image" />
+              <div className="images-container">
+                {previewImages.map((image) => (
+                  <img key={image} src={image} alt="xxx" />
+                ))}
 
-              <button type="button" className="new-image">
-                <FiPlus size={24} color="#15b6d6" />
-              </button>
+                <label htmlFor="image[]" className="new-image">
+                  <FiPlus size={24} color="#15b6d6" />
+                </label>
+              </div>
+
+              <input
+                multiple
+                type="file"
+                id="image[]"
+                onChange={handleSelectImages}
+              />
             </div>
           </fieldset>
 
@@ -189,23 +215,6 @@ const CreateOrphanage: React.FC = () => {
                   handleToggle(e.target.checked);
                 }}
               />
-
-              {/* <div className="button-select">
-                <button
-                  type="button"
-                  className={open_on_weekends ? 'active' : ''}
-                  onClick={() => setOpenOnWeekends(true)}
-                >
-                  Sim
-                </button>
-                <button
-                  type="button"
-                  className={!open_on_weekends ? 'active' : ''}
-                  onClick={() => setOpenOnWeekends(false)}
-                >
-                  Não
-                </button>
-              </div> */}
             </div>
           </fieldset>
 
@@ -219,5 +228,3 @@ const CreateOrphanage: React.FC = () => {
 };
 
 export default CreateOrphanage;
-
-// return `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;
