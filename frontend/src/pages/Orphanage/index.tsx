@@ -128,7 +128,7 @@ const Orphanage: React.FC = () => {
                   <p>Atendemos fim de semana</p>
                 </div>
               ) : (
-                <div className="open-on-weekends open-on-weekendse">
+                <div className="open-on-weekends open-on-weekends--red">
                   <FiInfo size={32} color={colors.danger} />
                   <p>Não atendemos fim de semana</p>
                 </div>
