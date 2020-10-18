@@ -48,59 +48,62 @@ const CreateOrphanage: React.FC = () => {
     });
   }
 
-  const handleSubmit = useCallback(async (data: OrphanageFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: OrphanageFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required(
-          'O campo Nome é de preenchimento obrigatório.',
-        ),
-        about: Yup.string().required(
-          'O campo Sobre é de preenchimento obrigatório.',
-        ),
-        instructions: Yup.string().required(
-          'O campo Instruções é de preenchimento obrigatório.',
-        ),
-        opening_hours: Yup.string().required(
-          'O campo Horário das visitas é de preenchimento obrigatório.',
-        ),
-        open_on_weekends: Yup.boolean().nullable(),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required(
+            'O campo Nome é de preenchimento obrigatório.',
+          ),
+          about: Yup.string().required(
+            'O campo Sobre é de preenchimento obrigatório.',
+          ),
+          instructions: Yup.string().required(
+            'O campo Instruções é de preenchimento obrigatório.',
+          ),
+          opening_hours: Yup.string().required(
+            'O campo Horário das visitas é de preenchimento obrigatório.',
+          ),
+          open_on_weekends: Yup.boolean().nullable(),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      console.log(data);
+        console.log(data);
 
-      const { latitude, longitude } = position;
+        const { latitude, longitude } = position;
 
-      const dataForm = new FormData();
+        const dataForm = new FormData();
 
-      dataForm.append('name', data.name);
-      dataForm.append('about', data.about);
-      dataForm.append('latitude', String(latitude));
-      dataForm.append('longitude', String(longitude));
-      dataForm.append('instructions', data.instructions);
-      dataForm.append('opening_hours', data.opening_hours);
-      dataForm.append('open_on_weekends', String(open_on_weekends));
-      images.forEach((image) => {
-        dataForm.append('images', image);
-      });
+        dataForm.append('name', data.name);
+        dataForm.append('about', data.about);
+        dataForm.append('latitude', String(latitude));
+        dataForm.append('longitude', String(longitude));
+        dataForm.append('instructions', data.instructions);
+        dataForm.append('opening_hours', data.opening_hours);
+        dataForm.append('open_on_weekends', String(open_on_weekends));
+        images.forEach((image) => {
+          dataForm.append('images', image);
+        });
 
-      alert('Cadastro com sucesso!');
+        alert('Cadastro com sucesso!');
 
-      await api.post('/orphanages', dataForm);
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        await api.post('/orphanages', dataForm);
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
+        }
+        console.log(err);
       }
-      console.log(err);
-    }
-  }, []);
+    },
+    [images, open_on_weekends, position],
+  );
 
   function handleToggle(event: boolean) {
     console.log(!!event);
