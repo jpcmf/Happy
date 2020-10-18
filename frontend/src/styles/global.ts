@@ -41,4 +41,14 @@ export default createGlobalStyle`
     button {
       cursor: pointer;
     }
+
+    .form-error {
+      animation: 1s ease-out 0s 1 slideInFromLeft;
+      color: ${colors.danger};
+      display: block;
+      font-size: 12px;
+      margin-top: 5px;
+      padding-right: 5px;
+      text-align: right;
+    }
 `;

@@ -35,6 +35,12 @@ export const Container = styled.div`
       }
     }
 
+    .leaflet-container {
+      border: solid 1px #d3e2e5;
+      border-radius: 20px;
+      margin-bottom: 40px;
+    }
+
     .input-block {
       + .input-block {
         margin-top: 24px;
@@ -116,7 +122,7 @@ export const Container = styled.div`
     }
 
     button.confirm-button {
-      margin-top: 64px;
+      margin-top: 40px;
       width: 100%;
       height: 64px;
       border: 0;
@@ -140,3 +146,5 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const ToggleWrapper = styled.div``;
