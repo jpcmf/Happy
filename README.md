@@ -1,6 +1,5 @@
 <h1 align="center">
-  <img alt="Happy" title="Happy" src=".github/logo.svg" width="250px" /> <br/>
-  Happy full application
+  <img alt="Happy" title="Happy" src=".github/logo.svg" width="250px" />
 </h1>
 
 <p align="center">In this repository you'll find a complete application, which includes the Back end, Front end and Mobile.</p>
