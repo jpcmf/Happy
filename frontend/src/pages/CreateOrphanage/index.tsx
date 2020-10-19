@@ -9,30 +9,23 @@ import * as Yup from 'yup';
 import mapIcon from 'utils/mapIcon';
 import getValidationErrors from 'utils/getValidationsErrors';
 
-import { FiPlus } from 'react-icons/fi';
+import { FiAlertCircle, FiPlus } from 'react-icons/fi';
 
 import api from 'services/api';
-import { Container } from './styles';
 
 import { useToast } from '../../hooks/toast';
-import { Sidebar, Input, Textarea, ToogleSwitch } from '../../components';
 
-interface OrphanageFormData {
-  position: {
-    latitude: string;
-    longitude: string;
-  };
-  name: string;
-  latitude: number;
-  longitude: number;
-  about: string;
-  instructions: string;
-  opening_hours: string;
-  open_on_weekends: boolean;
-  images: {
-    path: string;
-  };
-}
+import {
+  Sidebar,
+  Input,
+  InputMask,
+  Textarea,
+  ToogleSwitch,
+} from '../../components';
+
+import { Container } from './styles';
+
+import OrphanageFormData from './interface';
 
 const CreateOrphanage: React.FC = () => {
   const history = useHistory();
@@ -64,6 +57,10 @@ const CreateOrphanage: React.FC = () => {
           about: Yup.string().required(
             'O campo Sobre é de preenchimento obrigatório.',
           ),
+          phone: Yup.string()
+            .required('O campo WhatsApp é de preenchimento obrigatório.')
+            .min(13, 'Insira um WhatsApp válido.')
+            .max(14, 'Insira um WhatsApp válido.'),
           instructions: Yup.string().required(
             'O campo Instruções é de preenchimento obrigatório.',
           ),
@@ -83,6 +80,7 @@ const CreateOrphanage: React.FC = () => {
 
         dataForm.append('name', data.name);
         dataForm.append('about', data.about);
+        dataForm.append('phone', data.phone);
         dataForm.append('latitude', String(latitude));
         dataForm.append('longitude', String(longitude));
         dataForm.append('instructions', data.instructions);
@@ -107,20 +105,22 @@ const CreateOrphanage: React.FC = () => {
 
           formRef.current?.setErrors(errors);
         }
-        console.log(err);
+        console.log(err); // eslint-disable-line
       }
     },
-    [images, position, addToast, history], // eslint-disable-line
+    [images, position, addToast, history, open_on_weekends],
   );
 
   function handleToggle(event: boolean) {
+    console.log(event); // eslint-disable-line
+
     setOpenOnWeekends(event);
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) return;
 
-    console.log(event.target.files);
+    console.log(event.target.files); // eslint-disable-line
 
     const selectedImages = Array.from(event.target.files);
 
@@ -145,6 +145,11 @@ const CreateOrphanage: React.FC = () => {
         >
           <fieldset>
             <legend>Dados</legend>
+
+            <span className="alert">
+              <FiAlertCircle size={18} />
+              Clique no mapa para marcar a localização desejada.
+            </span>
 
             <Map
               center={[-25.4321587, -49.2796673]}
@@ -175,6 +180,16 @@ const CreateOrphanage: React.FC = () => {
                 label="Sobre"
                 small="Máximo de 300 caracteres"
                 maxLength={300}
+              />
+            </div>
+
+            <div className="input-block">
+              <InputMask
+                name="phone"
+                label="Número do WhatsApp"
+                mask="(99) 9999tt999?"
+                formatChars={{ '9': '[0-9]', t: '[0-9-]', '?': '[0-9 ]' }}
+                maskChar={null}
               />
             </div>
 

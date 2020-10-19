@@ -8,11 +8,11 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   textarea {
     display: block;
-  }
 
-  ${(props) =>
-    props.isErrored &&
-    css`
-      border-color: ${colors.danger};
-    `}
+    ${(props) =>
+      props.isErrored &&
+      css`
+        border-color: ${colors.danger} !important;
+      `}
+  }
 `;

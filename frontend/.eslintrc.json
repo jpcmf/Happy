@@ -34,7 +34,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
     "import/no-duplicates": "off",
-    "@typescript-eslint/camelcase": "off",
+    "camelcase": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -45,6 +45,11 @@
     ],
     "no-use-before-define": "off",
     "no-unused-expressions": "off",
+    "jsx-a11y/label-has-associated-control": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }]
   },
   "settings": {
     "import/resolver": {

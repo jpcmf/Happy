@@ -18,6 +18,7 @@ interface Orphanage {
   latitude: number;
   longitude: number;
   about: string;
+  phone: string;
   instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
@@ -43,6 +44,19 @@ const Orphanage: React.FC = () => {
     });
   }, [params.id]);
 
+  function sendWhatsApp(number: string, name: string) {
+    const desiredNumber = number.replace(/[^\w]/gi, '');
+
+    const win = window.open(
+      `https://wa.me/55${desiredNumber}?text=Olá ${name}, gostaria de agendar uma visita :)`,
+      '_blank',
+    );
+
+    if (win) {
+      win.focus();
+    }
+  }
+
   if (!orphanage) {
     return (
       <>
@@ -58,7 +72,10 @@ const Orphanage: React.FC = () => {
       <main>
         <div className="orphanage-details">
           <img
-            src={orphanage.images[activeImageIndex]?.url || `https://via.placeholder.com/698x300?text=${orphanage.name}`}
+            src={
+              orphanage.images[activeImageIndex]?.url ||
+              `https://via.placeholder.com/698x300?text=${orphanage.name}`
+            }
             alt={orphanage.name}
           />
 
@@ -135,7 +152,11 @@ const Orphanage: React.FC = () => {
               )}
             </div>
 
-            <button type="button" className="contact-button">
+            <button
+              type="button"
+              className="contact-button"
+              onClick={() => sendWhatsApp(orphanage.phone, orphanage.name)}
+            >
               <FaWhatsapp size={20} color="#FFF" />
               Entrar em contato
             </button>
