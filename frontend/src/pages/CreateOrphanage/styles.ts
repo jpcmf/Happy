@@ -41,6 +41,19 @@ export const Container = styled.div`
       margin-bottom: 40px;
     }
 
+    .alert {
+      align-items: center;
+      color: #8fa7b3;
+      display: flex;
+      font-size: 12px;
+      margin-left: 15px;
+      margin-bottom: 10px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+
     .input-block {
       + .input-block {
         margin-top: 24px;
@@ -53,7 +66,7 @@ export const Container = styled.div`
         line-height: 24px;
 
         span {
-          font-size: 14px;
+          font-size: 12px;
           color: #8fa7b3;
           margin-left: 24px;
           line-height: 24px;
