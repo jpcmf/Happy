@@ -39,6 +39,10 @@ export default class createOrphanages1602700677077
             // precision: 2,
           },
           {
+            name: 'phone',
+            type: 'text',
+          },
+          {
             name: 'about',
             type: 'text',
           },
