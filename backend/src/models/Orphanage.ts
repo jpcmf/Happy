@@ -25,6 +25,9 @@ class Orphanege {
   longitude: number;
 
   @Column()
+  phone: string;
+
+  @Column()
   about: string;
 
   @Column()

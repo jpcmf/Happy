@@ -7,6 +7,7 @@ interface Request {
   latitude: number;
   longitude: number;
   about: string;
+  phone: string;
   instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
@@ -21,6 +22,7 @@ class CreateOrphanageService {
     latitude,
     longitude,
     about,
+    phone,
     instructions,
     opening_hours,
     open_on_weekends,
@@ -33,6 +35,7 @@ class CreateOrphanageService {
       latitude,
       longitude,
       about,
+      phone,
       instructions,
       opening_hours,
       open_on_weekends,
