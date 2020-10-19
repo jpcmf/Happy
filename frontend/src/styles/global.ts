@@ -27,7 +27,7 @@ export default createGlobalStyle`
     }
 
     body, input, button, textarea {
-      font: 600 18px 'Nunito', sans-serif;
+      font: 600 16px 'Nunito', sans-serif;
     }
 
     h1, h2, h3, h4, h5, h6, strong {

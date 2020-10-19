@@ -1,4 +1,5 @@
 import React, { useCallback, useRef, useState, ChangeEvent } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { Form } from '@unform/web';
@@ -13,6 +14,7 @@ import { FiPlus } from 'react-icons/fi';
 import api from 'services/api';
 import { Container } from './styles';
 
+import { useToast } from '../../hooks/toast';
 import { Sidebar, Input, Textarea, ToogleSwitch } from '../../components';
 
 interface OrphanageFormData {
@@ -33,11 +35,13 @@ interface OrphanageFormData {
 }
 
 const CreateOrphanage: React.FC = () => {
+  const history = useHistory();
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const formRef = useRef<FormHandles>(null);
-  const [open_on_weekends, setOpenOnWeekends] = useState(true);
+  const [open_on_weekends, setOpenOnWeekends] = useState(false);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const { addToast } = useToast();
 
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
@@ -73,8 +77,6 @@ const CreateOrphanage: React.FC = () => {
           abortEarly: false,
         });
 
-        console.log(data);
-
         const { latitude, longitude } = position;
 
         const dataForm = new FormData();
@@ -90,9 +92,15 @@ const CreateOrphanage: React.FC = () => {
           dataForm.append('images', image);
         });
 
-        alert('Cadastro com sucesso!');
-
         await api.post('/orphanages', dataForm);
+
+        addToast({
+          type: 'success',
+          title: '😃 Cadastro concluído.',
+          description: 'Seu cadastro foi realizado sucesso.',
+        });
+
+        history.goBack();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -102,12 +110,11 @@ const CreateOrphanage: React.FC = () => {
         console.log(err);
       }
     },
-    [images, open_on_weekends, position],
+    [images, position, addToast, history], // eslint-disable-line
   );
 
   function handleToggle(event: boolean) {
-    console.log(!!event);
-    setOpenOnWeekends(!event);
+    setOpenOnWeekends(event);
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
@@ -140,7 +147,7 @@ const CreateOrphanage: React.FC = () => {
             <legend>Dados</legend>
 
             <Map
-              center={[-27.2092052, -49.6401092]}
+              center={[-25.4321587, -49.2796673]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onClick={handleMapClick}
@@ -176,7 +183,7 @@ const CreateOrphanage: React.FC = () => {
 
               <div className="images-container">
                 {previewImages.map((image) => (
-                  <img key={image} src={image} alt="xxx" />
+                  <img key={image} src={image} alt={image} />
                 ))}
 
                 <label htmlFor="image[]" className="new-image">
@@ -207,7 +214,7 @@ const CreateOrphanage: React.FC = () => {
             <div className="input-block">
               <ToogleSwitch
                 label="Atende fim de semana"
-                checked={!open_on_weekends}
+                checked={open_on_weekends}
                 id="open_on_weekends"
                 name="open_on_weekends"
                 value="yes"
