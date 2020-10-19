@@ -58,7 +58,7 @@ const Orphanage: React.FC = () => {
       <main>
         <div className="orphanage-details">
           <img
-            src={orphanage.images[activeImageIndex].url}
+            src={orphanage.images[activeImageIndex]?.url || `https://via.placeholder.com/698x300?text=${orphanage.name}`}
             alt={orphanage.name}
           />
 
