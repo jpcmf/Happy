@@ -1,8 +1,7 @@
 <h1 align="center">
-  <img alt="Happy" title="Happy" src=".github/logo.svg" width="250px" /> 
+  <img alt="Happy" title="Happy" src=".github/logo.svg" width="250px" /> <br/>
+  Happy full application
 </h1>
-
-<h2 align="center">Happy full application</h2>
 
 <p align="center">In this repository you'll find a complete application, which includes the Back end, Front end and Mobile.</p>
 
@@ -10,7 +9,7 @@
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/jpcmf/Happy">
 
   <a href="https://www.linkedin.com/in/joaopaulo80/">
-    <img alt="Made by João Paulo" src="https://img.shields.io/badge/made%20by-João Paulo-%2304D361">
+    <img alt="Made by João Paulo" src="https://img.shields.io/badge/made%20by-João Paulo-%2304D361">  
   </a>
 
   <a href="https://github.com/jpcmf/Happy/commits/main">
