@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import mapIcon from 'utils/mapIcon';
 import getValidationErrors from 'utils/getValidationsErrors';
 
-import { FiAlertCircle, FiPlus } from 'react-icons/fi';
+import { FiAlertCircle, FiPlus, FiX } from 'react-icons/fi';
 
 import api from 'services/api';
 
@@ -33,7 +33,9 @@ const CreateOrphanage: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const [open_on_weekends, setOpenOnWeekends] = useState(false);
   const [images, setImages] = useState<File[]>([]);
-  const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [previewImages, setPreviewImages] = useState<
+    { name: string; url: string }[]
+  >([]);
   const { addToast } = useToast();
 
   function handleMapClick(event: LeafletMouseEvent) {
@@ -122,12 +124,15 @@ const CreateOrphanage: React.FC = () => {
 
     console.log(event.target.files); // eslint-disable-line
 
-    const selectedImages = Array.from(event.target.files);
+    const selectedImages = images.concat(Array.from(event.target.files));
 
     setImages(selectedImages);
 
     const selectedImagesPreview = selectedImages.map((image) => {
-      return URL.createObjectURL(image);
+      return {
+        name: image.name,
+        url: URL.createObjectURL(image),
+      };
     });
 
     setPreviewImages(selectedImagesPreview);
@@ -204,7 +209,26 @@ const CreateOrphanage: React.FC = () => {
 
               <div className="images-container">
                 {previewImages.map((image) => (
-                  <img key={image} src={image} alt={image} />
+                  <div className="images-container--item" key={image.name}>
+                    <img src={image.url} alt={image.name} />
+                    <span>
+                      <FiX
+                        size={18}
+                        onClick={() => {
+                          setImages(
+                            images.filter((deletedImage) => {
+                              return image.name !== deletedImage.name;
+                            }),
+                          );
+                          setPreviewImages(
+                            previewImages.filter(
+                              (deletedImage) => image !== deletedImage,
+                            ),
+                          );
+                        }}
+                      />
+                    </span>
+                  </div>
                 ))}
 
                 <label htmlFor="image[]" className="new-image">
@@ -217,6 +241,7 @@ const CreateOrphanage: React.FC = () => {
                 type="file"
                 id="image[]"
                 onChange={handleSelectImages}
+                accept="image/x-png,image/gif,image/jpeg"
               />
             </div>
           </fieldset>
