@@ -14,7 +14,10 @@ const Home: React.FC = () => {
 
           <Main>
             <h1>Leve felicidade para o mundo</h1>
-            <p>Visite orfanatos e mude o dia de muitas crianças.</p>
+            <p>
+              Visite uma <strong>instituição de acolhimento</strong> e mude o
+              dia de muitas crianças.
+            </p>
           </Main>
 
           <Location>

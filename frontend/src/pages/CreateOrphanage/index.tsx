@@ -171,7 +171,11 @@ const CreateOrphanage: React.FC = () => {
             </Map>
 
             <div className="input-block">
-              <Input name="name" label="Nome" />
+              <Input
+                name="name"
+                label="Nome"
+                placeholder="Insira o nome da instituição de acolhimento"
+              />
             </div>
 
             <div className="input-block">
@@ -180,6 +184,7 @@ const CreateOrphanage: React.FC = () => {
                 label="Sobre"
                 small="Máximo de 300 caracteres"
                 maxLength={300}
+                placeholder="Descreva a instituição de acolhimento"
               />
             </div>
 
@@ -190,6 +195,7 @@ const CreateOrphanage: React.FC = () => {
                 mask="(99) 9999tt999?"
                 formatChars={{ '9': '[0-9]', t: '[0-9-]', '?': '[0-9 ]' }}
                 maskChar={null}
+                placeholder="Insira um número de WhatsApp"
               />
             </div>
 
@@ -219,11 +225,19 @@ const CreateOrphanage: React.FC = () => {
             <legend>Visitação</legend>
 
             <div className="input-block">
-              <Textarea name="instructions" label="Instruções" />
+              <Textarea
+                name="instructions"
+                label="Instruções"
+                placeholder="Insira as instruções de visitação"
+              />
             </div>
 
             <div className="input-block">
-              <Input name="opening_hours" label="Horário das visitas" />
+              <Input
+                name="opening_hours"
+                label="Horário das visitas"
+                placeholder="Insira o horário de visitação"
+              />
             </div>
 
             <div className="input-block">

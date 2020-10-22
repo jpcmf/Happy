@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  animation: 500ms ease-out 0s 1 slideInFromUp;
   display: flex;
 
   main {
@@ -81,6 +82,10 @@ export const Container = styled.div`
         border-radius: 20px;
         outline: none;
         color: #5c8599;
+
+        &::placeholder {
+          color: #cedee5;
+        }
       }
 
       input {

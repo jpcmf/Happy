@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
+  animation: 500ms ease-out 0s 1 fadeIn;
   display: flex;
   min-height: 100vh;
 

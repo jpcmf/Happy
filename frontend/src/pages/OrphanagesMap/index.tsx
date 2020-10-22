@@ -32,8 +32,10 @@ const Orphanages: React.FC = () => {
     <Container>
       <Aside>
         <header>
-          <MarkerImg />
-          <h2>Escolha um orfanato no mapa</h2>
+          <Link to="/">
+            <MarkerImg />
+          </Link>
+          <h2>Escolha uma instituição de acolhimento no mapa</h2>
           <p>Muitas crianças estão esperando a sua visita :)</p>
         </header>
 
