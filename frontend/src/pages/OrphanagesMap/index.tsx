@@ -19,7 +19,13 @@ interface Orphanage {
 }
 
 const Orphanages: React.FC = () => {
+  const mapDefaultPosition = { latitude: -25.4609276, longitude: -49.2740054 };
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
+  const [mapZoomIn, setMapZoomIn] = useState(14);
+  const [mapPosition, setMapPosition] = useState({
+    latitude: mapDefaultPosition.latitude,
+    longitude: mapDefaultPosition.longitude,
+  });
 
   useEffect(() => {
     api.get('/orphanages').then((response) => {
@@ -47,9 +53,16 @@ const Orphanages: React.FC = () => {
 
       <MapWrapper>
         <Map
-          center={[-25.4609276, -49.2740054]}
-          zoom={13}
+          center={[mapPosition.latitude, mapPosition.longitude]}
+          zoom={mapZoomIn}
           style={{ width: '100%', height: '100%' }}
+          onClick={() => {
+            setMapZoomIn(14);
+            setMapPosition({
+              latitude: mapDefaultPosition.latitude,
+              longitude: mapDefaultPosition.longitude,
+            });
+          }}
         >
           {/* <TileLayer
               url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -60,9 +73,16 @@ const Orphanages: React.FC = () => {
           />
           {orphanages.map((orphanage) => (
             <Marker
+              key={orphanage.id}
               icon={mapIcon}
               position={[orphanage.latitude, orphanage.longitude]}
-              key={orphanage.id}
+              onClick={() => {
+                setMapZoomIn(17);
+                setMapPosition({
+                  latitude: orphanage.latitude,
+                  longitude: orphanage.longitude,
+                });
+              }}
             >
               <Popup
                 closeButton={false}
