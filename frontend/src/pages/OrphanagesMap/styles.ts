@@ -12,6 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Aside = styled.aside`
+  animation: 750ms ease 0s 1 slideInFromLeft100;
   background: linear-gradient(329.54deg, #15b6d6 0%, #15d6d6 100%);
   display: flex;
   flex-direction: column;
@@ -50,6 +51,7 @@ export const Aside = styled.aside`
 `;
 
 export const MapWrapper = styled.div`
+  animation: 5000ms ease-out 0s 1 fadeIn;
   flex: 1;
   height: 100%;
   width: 100%;

@@ -16,6 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  animation: 1000ms ease-out 0s 1 fadeIn;
   align-items: flex-start;
   background: url(${landingImg}) no-repeat 80% center;
   background-size: 48%;
@@ -41,9 +42,13 @@ export const Main = styled.div`
 
   p {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 34px;
     margin-top: 40px;
+
+    strong {
+      border-bottom: solid 1px;
+    }
   }
 `;
 
