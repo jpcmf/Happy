@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Container = styled.div`
   animation: 500ms ease-out 0s 1 slideInFromUp;
@@ -111,6 +112,32 @@ export const Container = styled.div`
           height: 96px;
           object-fit: cover;
           width: 100%;
+        }
+
+        &--item {
+          position: relative;
+
+          span {
+            align-items: center;
+            background-color: ${colors.danger};
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            padding: 2px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: opacity ease 300ms;
+
+            &:hover {
+              opacity: 0.6;
+            }
+          }
+
+          svg {
+            color: ${colors.white};
+          }
         }
       }
 
