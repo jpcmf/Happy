@@ -21,7 +21,7 @@ interface Orphanage {
 const Orphanages: React.FC = () => {
   const mapDefaultPosition = { latitude: -25.4609276, longitude: -49.2740054 };
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
-  const [mapZoomIn, setMapZoomIn] = useState(14);
+  const [mapZoomIn, setMapZoomIn] = useState(12);
   const [mapPosition, setMapPosition] = useState({
     latitude: mapDefaultPosition.latitude,
     longitude: mapDefaultPosition.longitude,
@@ -57,7 +57,7 @@ const Orphanages: React.FC = () => {
           zoom={mapZoomIn}
           style={{ width: '100%', height: '100%' }}
           onClick={() => {
-            setMapZoomIn(14);
+            setMapZoomIn(12);
             setMapPosition({
               latitude: mapDefaultPosition.latitude,
               longitude: mapDefaultPosition.longitude,
@@ -77,7 +77,7 @@ const Orphanages: React.FC = () => {
               icon={mapIcon}
               position={[orphanage.latitude, orphanage.longitude]}
               onClick={() => {
-                setMapZoomIn(17);
+                setMapZoomIn(16);
                 setMapPosition({
                   latitude: orphanage.latitude,
                   longitude: orphanage.longitude,

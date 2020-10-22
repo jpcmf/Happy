@@ -10,13 +10,15 @@ export const Container = styled.div`
   }
 
   form.create-orphanage-form {
-    width: 700px;
-    margin: 64px auto;
     background: #ffffff;
-    border: 1px solid #d3e2e5;
     border-radius: 20px;
-    padding: 64px 80px;
+    border: 1px solid #d3e2e5;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin: 64px auto;
     overflow: hidden;
+    padding: 64px 80px;
+    width: 700px;
 
     fieldset {
       border: 0;
