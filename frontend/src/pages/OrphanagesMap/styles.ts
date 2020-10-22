@@ -71,10 +71,11 @@ export const MapWrapper = styled.div`
       align-items: center;
       color: ${colors.darkBlue};
       display: flex;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       justify-content: space-between;
       margin: 6px 8px 6px 15px;
+      max-width: 250px;
 
       a {
         align-items: center;
@@ -85,6 +86,7 @@ export const MapWrapper = styled.div`
         height: 40px;
         justify-content: center;
         width: 40px;
+        flex-shrink: 0;
       }
     }
 
