@@ -8,7 +8,7 @@ export default class createImages1602810896490 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
@@ -19,7 +19,7 @@ export default class createImages1602810896490 implements MigrationInterface {
           },
           {
             name: 'orphanage_id',
-            type: 'varchar',
+            type: 'uuid',
           },
         ],
         foreignKeys: [

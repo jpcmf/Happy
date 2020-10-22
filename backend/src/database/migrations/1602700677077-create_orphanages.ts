@@ -17,10 +17,15 @@ export default class createOrphanages1602700677077
           // },
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
+          },
+          {
+            name: 'orphanage_id',
+            type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'name',
@@ -70,8 +75,29 @@ export default class createOrphanages1602700677077
             default: 'now()',
           },
         ],
+        foreignKeys: [
+          {
+            name: 'OrphanageId',
+            columnNames: ['orphanage_id'],
+            referencedColumnNames: ['id'],
+            referencedTableName: 'users',
+            onDelete: 'SET NULL',
+            onUpdate: 'CASCADE',
+          },
+        ],
       }),
     );
+
+    // await queryRunner.createForeignKey(
+    //   'orphanages',
+    //   new TableForeignKey({
+    //     columnNames: ['orphanage_id'],
+    //     referencedColumnNames: ['id'],
+    //     referencedTableName: 'users',
+    //     onDelete: 'SET NULL',
+    //     onUpdate: 'CASCADE',
+    //   }),
+    // );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

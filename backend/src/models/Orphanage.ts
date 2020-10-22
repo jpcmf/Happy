@@ -6,14 +6,23 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 
 import Image from './Image';
+import User from './User';
 
 @Entity('orphanages')
 class Orphanege {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column()
+  orphanage_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'orphanage_id' })
+  orphanage: User;
 
   @Column()
   name: string;
