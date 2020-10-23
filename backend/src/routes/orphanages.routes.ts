@@ -32,6 +32,7 @@ orphanagesRouter.get('/:id', async (request, response) => {
 orphanagesRouter.post('/', async (request, response) => {
   const {
     name,
+    orphanage_id,
     latitude,
     longitude,
     about,
@@ -42,6 +43,7 @@ orphanagesRouter.post('/', async (request, response) => {
   } = request.body;
 
   const createOrphanage = new CreateOrphanageService();
+
   const requestImages = request.files as Express.Multer.File[];
   const images = requestImages.map(image => {
     return { path: image.filename };
@@ -49,6 +51,7 @@ orphanagesRouter.post('/', async (request, response) => {
 
   const data = {
     name,
+    orphanage_id,
     latitude,
     longitude,
     about,
@@ -61,6 +64,7 @@ orphanagesRouter.post('/', async (request, response) => {
 
   const schema = Yup.object().shape({
     name: Yup.string().required(),
+    orphanage_id: Yup.string(),
     latitude: Yup.number().required(),
     longitude: Yup.number().required(),
     about: Yup.string().required().max(300),

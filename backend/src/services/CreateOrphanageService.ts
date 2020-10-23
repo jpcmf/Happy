@@ -4,6 +4,7 @@ import OrphanagesRepository from '../repositories/OrphanagesRepository';
 
 interface Request {
   name: string;
+  orphanage_id: string;
   latitude: number;
   longitude: number;
   about: string;
@@ -19,6 +20,7 @@ interface Request {
 class CreateOrphanageService {
   public async execute({
     name,
+    orphanage_id,
     latitude,
     longitude,
     about,
@@ -32,6 +34,7 @@ class CreateOrphanageService {
 
     const orphanage = orphanagesRepository.create({
       name,
+      orphanage_id,
       latitude,
       longitude,
       about,
