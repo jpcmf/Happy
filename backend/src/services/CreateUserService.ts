@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { hash } from 'bcrypt';
+
 import User from '../models/User';
 
 interface Request {
