@@ -11,8 +11,6 @@ import orphanageView from '../views/orphanages_view';
 
 const orphanagesRouter = Router();
 
-orphanagesRouter.use(ensureAuthenticated);
-
 orphanagesRouter.get('/', async (request, response) => {
   const orphanagesRepository = getCustomRepository(OrphanagesRepository);
   const orphanages = await orphanagesRepository.find({
@@ -32,6 +30,8 @@ orphanagesRouter.get('/:id', async (request, response) => {
 
   return response.json(orphanageView.render(orphanage));
 });
+
+orphanagesRouter.use(ensureAuthenticated);
 
 orphanagesRouter.post('/', async (request, response) => {
   const {
