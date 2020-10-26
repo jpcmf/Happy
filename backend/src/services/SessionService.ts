@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 
 import User from '../models/User';
 
@@ -10,6 +11,7 @@ interface Request {
 
 interface Response {
   user: User;
+  token: string;
 }
 
 class SessionsService {
@@ -30,15 +32,12 @@ class SessionsService {
       throw new Error('Incorrect e-mail/password combination.');
     }
 
-    // const hashPassword = await hash(password, 8);
-    // const user = usersRepository.create({
-    //   name,
-    //   email,
-    //   password: hashPassword,
-    // });
-    // await usersRepository.save(user);
+    const token = sign({}, '0247a27eb91c21abe22da4eec51e5744', {
+      subject: user.id,
+      expiresIn: '1d',
+    });
 
-    return { user };
+    return { user, token };
   }
 }
 
