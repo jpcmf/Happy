@@ -5,9 +5,13 @@ import * as Yup from 'yup';
 import OrphanagesRepository from '../repositories/OrphanagesRepository';
 import CreateOrphanageService from '../services/CreateOrphanageService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 import orphanageView from '../views/orphanages_view';
 
 const orphanagesRouter = Router();
+
+orphanagesRouter.use(ensureAuthenticated);
 
 orphanagesRouter.get('/', async (request, response) => {
   const orphanagesRepository = getCustomRepository(OrphanagesRepository);
