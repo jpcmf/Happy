@@ -5,7 +5,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import Orphanage from './Orphanage';
+import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
 
 @Entity('images')
 class Image {

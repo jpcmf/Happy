@@ -1,13 +1,15 @@
 import 'reflect-metadata';
+
 import path from 'path';
 import cors from 'cors';
 
 import express from 'express';
 import 'express-async-errors';
-import './database/connection';
 
+import errorHandler from '@shared/errors/handler';
 import routes from './routes';
-import errorHandler from './errors/handler';
+
+import '@shared/infra/typeorm/connection';
 
 const app = express();
 

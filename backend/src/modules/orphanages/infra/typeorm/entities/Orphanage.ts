@@ -9,11 +9,11 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-import Image from './Image';
-import User from './User';
+import Image from '@modules/images/infra/typeorm/entities/Image';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('orphanages')
-class Orphanege {
+class Orphanage {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -61,4 +61,4 @@ class Orphanege {
   updated_at: Date;
 }
 
-export default Orphanege;
+export default Orphanage;
