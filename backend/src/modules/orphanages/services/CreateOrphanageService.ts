@@ -1,9 +1,8 @@
-import { getCustomRepository } from 'typeorm';
-
 import Orphanage from '../infra/typeorm/entities/Orphanage';
-import OrphanagesRepository from '../repositories/OrphanagesRepository';
 
-interface Request {
+import IOrphanagesRepository from '../repositories/IOrphanagesRepository';
+
+interface IRequest {
   name: string;
   orphanage_id: string;
   latitude: number;
@@ -19,6 +18,8 @@ interface Request {
 }
 
 class CreateOrphanageService {
+  constructor(private orphanagesRepository: IOrphanagesRepository) {}
+
   public async execute({
     name,
     orphanage_id,
@@ -30,10 +31,8 @@ class CreateOrphanageService {
     opening_hours,
     open_on_weekends,
     images,
-  }: Request): Promise<Orphanage> {
-    const orphanagesRepository = getCustomRepository(OrphanagesRepository);
-
-    const orphanage = orphanagesRepository.create({
+  }: IRequest): Promise<Orphanage> {
+    const orphanage = await this.orphanagesRepository.create({
       name,
       orphanage_id,
       latitude,
@@ -45,8 +44,6 @@ class CreateOrphanageService {
       open_on_weekends,
       images,
     });
-
-    await orphanagesRepository.save(orphanage);
 
     return orphanage;
   }

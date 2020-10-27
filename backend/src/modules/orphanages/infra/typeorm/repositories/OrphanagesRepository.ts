@@ -1,44 +1,46 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesRepository';
+import ICreateOrphanageDTO from '../../../dtos/ICreateOrphanageDTO';
 
 import Orphanage from '../entities/Orphanage';
 
-// interface CreateOrphanageDTO {
-//   name: string;
-//   latitude: number;
-//   longitude: number;
-//   about: string;
-//   instructions: string;
-//   opening_hours: string;
-//   open_on_weekends: boolean;
-// }
+class OrphanagesRepository implements IOrphanagesRepository {
+  private ormRepository: Repository<Orphanage>;
 
-@EntityRepository(Orphanage)
-class OrphanagesRepository
-  extends Repository<Orphanage>
-  implements IOrphanagesRepository {
-  // public create({
-  //   name,
-  //   latitude,
-  //   longitude,
-  //   about,
-  //   instructions,
-  //   opening_hours,
-  //   open_on_weekends,
-  // }: CreateOrphanageDTO): Orphanage {
-  //   const orphanage = new Orphanage({
-  //     name,
-  //     latitude,
-  //     longitude,
-  //     about,
-  //     instructions,
-  //     opening_hours,
-  //     open_on_weekends,
-  //   });
-  //   this.orphanages.push(orphanage);
-  //   return orphanage;
-  // }
+  constructor() {
+    this.ormRepository = getRepository(Orphanage);
+  }
+
+  public async create({
+    name,
+    orphanage_id,
+    latitude,
+    longitude,
+    about,
+    phone,
+    instructions,
+    opening_hours,
+    open_on_weekends,
+    images,
+  }: ICreateOrphanageDTO): Promise<Orphanage> {
+    const orphanage = this.ormRepository.create({
+      name,
+      orphanage_id,
+      latitude,
+      longitude,
+      about,
+      phone,
+      instructions,
+      opening_hours,
+      open_on_weekends,
+      images,
+    });
+
+    await this.ormRepository.save(orphanage);
+
+    return orphanage;
+  }
 }
 
 export default OrphanagesRepository;
