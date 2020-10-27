@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 
-import Orphanege from '../models/Orphanage';
+import Orphanage from '../infra/typeorm/entities/Orphanage';
 import OrphanagesRepository from '../repositories/OrphanagesRepository';
 
 interface Request {
@@ -30,7 +30,7 @@ class CreateOrphanageService {
     opening_hours,
     open_on_weekends,
     images,
-  }: Request): Promise<Orphanege> {
+  }: Request): Promise<Orphanage> {
     const orphanagesRepository = getCustomRepository(OrphanagesRepository);
 
     const orphanage = orphanagesRepository.create({

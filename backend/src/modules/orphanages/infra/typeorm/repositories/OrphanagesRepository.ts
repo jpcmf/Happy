@@ -1,5 +1,8 @@
 import { EntityRepository, Repository } from 'typeorm';
-import Orphanage from '../models/Orphanage';
+
+import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesRepository';
+
+import Orphanage from '../entities/Orphanage';
 
 // interface CreateOrphanageDTO {
 //   name: string;
@@ -12,7 +15,9 @@ import Orphanage from '../models/Orphanage';
 // }
 
 @EntityRepository(Orphanage)
-class OrphanagesRepository extends Repository<Orphanage> {
+class OrphanagesRepository
+  extends Repository<Orphanage>
+  implements IOrphanagesRepository {
   // public create({
   //   name,
   //   latitude,

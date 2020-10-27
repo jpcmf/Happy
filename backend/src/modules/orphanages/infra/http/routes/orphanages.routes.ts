@@ -2,12 +2,12 @@ import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 import * as Yup from 'yup';
 
-import OrphanagesRepository from '../repositories/OrphanagesRepository';
-import CreateOrphanageService from '../services/CreateOrphanageService';
+import OrphanagesRepository from '@modules/orphanages/repositories/OrphanagesRepository';
+import CreateOrphanageService from '@modules/orphanages/services/CreateOrphanageService';
 
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
-import orphanageView from '../views/orphanages_view';
+import orphanageView from '@modules/orphanages/views/orphanages_view';
 
 const orphanagesRouter = Router();
 
