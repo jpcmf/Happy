@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import * as Yup from 'yup';
+import { container } from 'tsyringe';
 
-import OrphanagesRepository from '@modules/orphanages/infra/typeorm/repositories/OrphanagesRepository';
 import CreateOrphanageService from '@modules/orphanages/services/CreateOrphanageService';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
@@ -42,8 +42,8 @@ orphanagesRouter.post('/', async (request, response) => {
     opening_hours,
     open_on_weekends,
   } = request.body;
-  const orphanagesRepository = new OrphanagesRepository();
-  const createOrphanage = new CreateOrphanageService(orphanagesRepository);
+
+  const createOrphanage = container.resolve(CreateOrphanageService);
 
   const requestImages = request.files as Express.Multer.File[];
   const images = requestImages.map(image => {
