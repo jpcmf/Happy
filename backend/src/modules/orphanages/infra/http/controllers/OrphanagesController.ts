@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import * as Yup from 'yup';
 import { container } from 'tsyringe';
 
+import AppError from '@shared/errors/AppError';
+
 import orphanageView from '@modules/orphanages/infra/http/views/orphanages_view';
 
 import CreateOrphanageService from '@modules/orphanages/services/CreateOrphanageService';
@@ -83,7 +85,11 @@ class OrphanagesController {
 
     const orphanage = await showOrphanage.execute(id);
 
-    return response.json(orphanage);
+    if (!orphanage) {
+      throw new AppError('Orphanage not found.', 404);
+    }
+
+    return response.json(orphanageView.render(orphanage));
   }
 }
 
