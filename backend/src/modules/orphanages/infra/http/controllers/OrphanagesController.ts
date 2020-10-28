@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import * as Yup from 'yup';
 import { container } from 'tsyringe';
 
-import orphanageView from '@modules/orphanages/views/orphanages_view';
+import orphanageView from '@modules/orphanages/infra/http/views/orphanages_view';
 
 import CreateOrphanageService from '@modules/orphanages/services/CreateOrphanageService';
 import ListOrphanagesService from '@modules/orphanages/services/ListOrphanagesService';
@@ -69,14 +69,19 @@ class OrphanagesController {
   }
 
   public async index(request: Request, response: Response): Promise<Response> {
-    const orphanages = container.resolve(ListOrphanagesService);
+    const listOrphanages = container.resolve(ListOrphanagesService);
 
-    // return response.json(orphanageView.renderMany(orphanages));
-    return response.json(orphanages);
+    const orphanages = await listOrphanages.execute();
+
+    return response.json(orphanageView.renderMany(orphanages));
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    const orphanage = container.resolve(FindOrphanageService);
+    const { id } = request.params;
+
+    const showOrphanage = container.resolve(FindOrphanageService);
+
+    const orphanage = await showOrphanage.execute(id);
 
     return response.json(orphanage);
   }

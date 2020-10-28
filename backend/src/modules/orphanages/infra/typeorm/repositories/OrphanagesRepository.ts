@@ -48,6 +48,8 @@ class OrphanagesRepository implements IOrphanagesRepository {
       relations: ['images'],
     });
 
+    console.log('repository...', orphanages);
+
     return orphanages;
   }
 
@@ -55,6 +57,8 @@ class OrphanagesRepository implements IOrphanagesRepository {
     const orphanage = await this.ormRepository.findOneOrFail(id, {
       relations: ['images'],
     });
+
+    console.log('repository...', orphanage);
 
     return orphanage;
   }
