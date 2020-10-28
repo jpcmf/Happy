@@ -14,8 +14,6 @@ class ListOrphanagesService {
   public async execute(): Promise<Orphanage[]> {
     const orphanages = await this.orphanagesRepository.findAllOrphanages();
 
-    console.log('orphanages...', orphanages);
-
     return orphanages;
   }
 }

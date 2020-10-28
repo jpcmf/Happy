@@ -1,5 +1,5 @@
 import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
-import imagesView from '@modules/images/views/images_view';
+import imagesView from '@modules/images/infra/http/views/images_view';
 
 export default {
   render(orphanage: Orphanage) {
