@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesRepository';
+
 import ICreateOrphanageDTO from '../../../dtos/ICreateOrphanageDTO';
 
 import Orphanage from '../entities/Orphanage';
@@ -38,6 +39,22 @@ class OrphanagesRepository implements IOrphanagesRepository {
     });
 
     await this.ormRepository.save(orphanage);
+
+    return orphanage;
+  }
+
+  public async findAllOrphanages(): Promise<Orphanage[]> {
+    const orphanages = await this.ormRepository.find({
+      relations: ['images'],
+    });
+
+    return orphanages;
+  }
+
+  public async findById(id: string): Promise<Orphanage | undefined> {
+    const orphanage = await this.ormRepository.findOneOrFail(id, {
+      relations: ['images'],
+    });
 
     return orphanage;
   }
