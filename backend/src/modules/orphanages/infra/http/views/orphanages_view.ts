@@ -15,10 +15,16 @@ export default {
       opening_hours: orphanage.opening_hours,
       open_on_weekends: orphanage.open_on_weekends,
       images: imagesView.renderMany(orphanage.images),
+      created_at: orphanage.created_at,
+      updated_at: orphanage.updated_at,
     };
   },
 
   renderMany(orphanages: Orphanage[]) {
-    return orphanages.map(orphanage => this.render(orphanage));
+    return orphanages.map(orphanage => {
+      const { images, ...rest } = this.render(orphanage); // eslint-disable-line
+
+      return rest;
+    });
   },
 };
