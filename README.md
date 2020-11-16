@@ -38,6 +38,18 @@ The project requires [Node.js](https://nodejs.org/) and [Docker](https://docs.do
 
 ## 💻 Front end
 
+After cloning the repository, go to the folder named `frontend` and install all the dependencies required and run the project by using the command `yarn start`.
+
+```bash
+# install dependencies
+yarn install
+```
+
+```bash
+# run at localhost:3000
+yarn start
+```
+
 ## 📱 Mobile
 
 # :memo: License
