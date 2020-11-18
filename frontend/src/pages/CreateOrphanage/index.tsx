@@ -28,14 +28,15 @@ import { Container } from './styles';
 import OrphanageFormData from './interface';
 
 const CreateOrphanage: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
   const history = useHistory();
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
-  const formRef = useRef<FormHandles>(null);
   const [open_on_weekends, setOpenOnWeekends] = useState(false);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<
     { name: string; url: string }[]
   >([]);
+
   const { addToast } = useToast();
 
   function handleMapClick(event: LeafletMouseEvent) {

@@ -103,10 +103,6 @@ const Orphanages: React.FC = () => {
       <Button to="/signin">
         <FiPlus size={32} color={colors.white} />
       </Button>
-
-      {/* <Button to="/orphanages/create">
-        <FiPlus size={32} color={colors.white} />
-      </Button> */}
     </Container>
   );
 };

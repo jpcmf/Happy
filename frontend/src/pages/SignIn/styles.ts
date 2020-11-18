@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
@@ -39,5 +40,68 @@ export const Container = styled.div`
         padding-bottom: 24px;
       }
     }
+
+    .input-block {
+      + .input-block {
+        margin-top: 24px;
+      }
+
+      label {
+        display: flex;
+        color: #8fa7b3;
+        margin-bottom: 8px;
+        line-height: 24px;
+
+        span {
+          font-size: 12px;
+          color: #8fa7b3;
+          margin-left: 24px;
+          line-height: 24px;
+        }
+      }
+
+      input {
+        background: #f5f8fa;
+        border-radius: 20px;
+        border: 1px solid #d3e2e5;
+        color: #5c8599;
+        height: 64px;
+        outline: none;
+        padding: 0 16px;
+        width: 100%;
+
+        &::placeholder {
+          color: #cedee5;
+        }
+      }
+    }
+
+    button.login-button {
+      align-items: center;
+      background: #3cdc8c;
+      border-radius: 20px;
+      border: 0;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      font-weight: 800;
+      height: 64px;
+      justify-content: center;
+      margin-top: 40px;
+      transition: background-color 0.2s;
+      width: 100%;
+
+      &:hover {
+        background: #36cf82;
+      }
+
+      svg {
+        margin-right: 16px;
+      }
+    }
   }
+`;
+
+export const Button = styled(Link)`
+  border: 1px solid #000;
 `;
