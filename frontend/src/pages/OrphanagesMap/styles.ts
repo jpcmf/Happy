@@ -16,6 +16,7 @@ export const Aside = styled.aside`
   background: linear-gradient(329.54deg, #15b6d6 0%, #15d6d6 100%);
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: space-between;
   padding: 80px;
   width: 440px;

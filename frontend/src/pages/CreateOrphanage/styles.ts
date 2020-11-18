@@ -2,14 +2,15 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
-  animation: 500ms ease-out 0s 1 slideInFromUp;
   display: flex;
+  height: 100vh;
 
   main {
     flex: 1;
   }
 
   form.create-orphanage-form {
+    animation: 500ms ease-out 0s 1 slideInFromUp;
     background: #ffffff;
     border-radius: 20px;
     border: 1px solid #d3e2e5;
