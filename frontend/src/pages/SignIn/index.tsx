@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
@@ -10,12 +10,13 @@ import getValidationErrors from '../../utils/getValidationsErrors';
 
 import SignInFormData from './interface';
 
-import { Container, Button } from './styles';
+import { Container } from './styles';
 
-import { Sidebar, Input } from '../../components';
+import { Sidebar, Input, Button } from '../../components';
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const [loading, setLoading] = useState(false);
 
   const { signIn } = useAuth();
   const { addToast } = useToast();
@@ -25,6 +26,8 @@ const SignIn: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
+        setLoading(true);
+
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -50,10 +53,18 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+
+          addToast({
+            type: 'error',
+            title: '😕 Erro na autenticação.',
+            description: 'Verifique se o e-mail e senha são válidos.',
+          });
         }
+      } finally {
+        setLoading(false);
       }
     },
-    [signIn, history],
+    [signIn, history, addToast],
   );
 
   return (
@@ -87,11 +98,9 @@ const SignIn: React.FC = () => {
             </div>
           </fieldset>
 
-          <button className="login-button" type="submit">
+          <Button loading={loading} type="submit" className="login-button">
             Entrar
-          </button>
-
-          <Button to="/orphanages/create">create</Button>
+          </Button>
         </Form>
       </main>
     </Container>
