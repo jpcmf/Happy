@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
@@ -12,7 +11,7 @@ export const Container = styled.div`
 
   form.create-orphanage-form {
     animation: 500ms ease-out 0s 1 slideInFromUp;
-    background: #ffffff;
+    background-color: ${colors.white};
     border-radius: 20px;
     border: 1px solid #d3e2e5;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -77,31 +76,7 @@ export const Container = styled.div`
     }
 
     button.login-button {
-      align-items: center;
-      background: #3cdc8c;
-      border-radius: 20px;
-      border: 0;
-      color: #ffffff;
-      cursor: pointer;
-      display: flex;
-      font-weight: 800;
-      height: 64px;
-      justify-content: center;
       margin-top: 40px;
-      transition: background-color 0.2s;
-      width: 100%;
-
-      &:hover {
-        background: #36cf82;
-      }
-
-      svg {
-        margin-right: 16px;
-      }
     }
   }
-`;
-
-export const Button = styled(Link)`
-  border: 1px solid #000;
 `;
