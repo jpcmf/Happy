@@ -216,3 +216,29 @@ export const Container = styled.div`
 `;
 
 export const ToggleWrapper = styled.div``;
+
+export const UserAvatar = styled.button`
+  align-items: center;
+  background-color: ${colors.white};
+  border-radius: 50%;
+  border: 2px solid ${colors.white};
+  cursor: pointer;
+  display: flex;
+  height: 3.3rem;
+  justify-content: center;
+  padding: 0.3rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  transition: all 300ms ease;
+  width: 3.3rem;
+  z-index: 1;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  svg {
+    stroke: ${colors.danger};
+  }
+`;
