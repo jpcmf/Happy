@@ -53,13 +53,13 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
-
-          addToast({
-            type: 'error',
-            title: '😕 Erro na autenticação.',
-            description: 'Verifique se o e-mail e senha são válidos.',
-          });
         }
+
+        addToast({
+          type: 'error',
+          title: '😕 Erro na autenticação.',
+          description: 'Verifique se o e-mail e senha são válidos.',
+        });
       } finally {
         setLoading(false);
       }
