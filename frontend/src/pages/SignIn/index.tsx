@@ -52,19 +52,21 @@ const SignIn: React.FC = () => {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
-          formRef.current?.setErrors(errors);
+          console.log(errors);
 
-          addToast({
-            type: 'error',
-            title: '😕 Erro na autenticação.',
-            description: 'Verifique se o e-mail e senha são válidos.',
-          });
+          formRef.current?.setErrors(errors);
         }
+
+        addToast({
+          type: 'error',
+          title: '😕 Erro na autenticação.',
+          description: 'Verifique se o e-mail e senha são válidos.',
+        });
       } finally {
         setLoading(false);
       }
     },
-    [signIn, history, addToast],
+    [addToast, history, signIn],
   );
 
   return (
