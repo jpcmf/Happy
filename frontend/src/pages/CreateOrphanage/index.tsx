@@ -9,11 +9,12 @@ import * as Yup from 'yup';
 import mapIcon from 'utils/mapIcon';
 import getValidationErrors from 'utils/getValidationsErrors';
 
-import { FiAlertCircle, FiPlus, FiX } from 'react-icons/fi';
+import { FiAlertCircle, FiPlus, FiX, FiPower } from 'react-icons/fi';
 
 import api from 'services/api';
 
 import { useToast } from '../../hooks/toast';
+import { useAuth } from '../../hooks/auth';
 
 import {
   Sidebar,
@@ -23,7 +24,7 @@ import {
   ToogleSwitch,
 } from '../../components';
 
-import { Container } from './styles';
+import { Container, UserAvatar } from './styles';
 
 import OrphanageFormData from './interface';
 
@@ -38,6 +39,7 @@ const CreateOrphanage: React.FC = () => {
   >([]);
 
   const { addToast } = useToast();
+  const { signOut } = useAuth();
 
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
@@ -142,6 +144,10 @@ const CreateOrphanage: React.FC = () => {
   return (
     <Container>
       <Sidebar />
+
+      <UserAvatar onClick={signOut} type="button">
+        <FiPower size={25} />
+      </UserAvatar>
 
       <main>
         <Form
