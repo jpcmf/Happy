@@ -1,4 +1,10 @@
-import React, { useCallback, useRef, useState, ChangeEvent } from 'react';
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  ChangeEvent,
+  useEffect,
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
@@ -9,12 +15,11 @@ import * as Yup from 'yup';
 import mapIcon from 'utils/mapIcon';
 import getValidationErrors from 'utils/getValidationsErrors';
 
-import { FiAlertCircle, FiPlus, FiX, FiPower } from 'react-icons/fi';
+import { FiAlertCircle, FiPlus, FiX } from 'react-icons/fi';
 
 import api from 'services/api';
 
 import { useToast } from '../../hooks/toast';
-import { useAuth } from '../../hooks/auth';
 
 import {
   Sidebar,
@@ -24,7 +29,7 @@ import {
   ToogleSwitch,
 } from '../../components';
 
-import { Container, UserAvatar } from './styles';
+import { Container } from './styles';
 
 import OrphanageFormData from './interface';
 
@@ -37,9 +42,10 @@ const CreateOrphanage: React.FC = () => {
   const [previewImages, setPreviewImages] = useState<
     { name: string; url: string }[]
   >([]);
+  const [latitudeInput, setLatitudeInput] = useState<number>();
+  const [longitudeInput, setLongitudeInput] = useState<number>();
 
   const { addToast } = useToast();
-  const { signOut } = useAuth();
 
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
@@ -48,6 +54,9 @@ const CreateOrphanage: React.FC = () => {
       latitude: lat,
       longitude: lng,
     });
+
+    setLatitudeInput(lat);
+    setLongitudeInput(lng);
   }
 
   const handleSubmit = useCallback(
@@ -56,21 +65,23 @@ const CreateOrphanage: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required(
-            'O campo Nome é de preenchimento obrigatório.',
+          latitude: Yup.string().required(
+            'Latitude é de preenchimento obrigatório.',
           ),
-          about: Yup.string().required(
-            'O campo Sobre é de preenchimento obrigatório.',
+          longitude: Yup.string().required(
+            'Longitude é de preenchimento obrigatório.',
           ),
+          name: Yup.string().required('Nome é de preenchimento obrigatório.'),
+          about: Yup.string().required('Sobre é de preenchimento obrigatório.'),
           phone: Yup.string()
-            .required('O campo WhatsApp é de preenchimento obrigatório.')
+            .required('WhatsApp é de preenchimento obrigatório.')
             .min(13, 'Insira um WhatsApp válido.')
             .max(14, 'Insira um WhatsApp válido.'),
           instructions: Yup.string().required(
-            'O campo Instruções é de preenchimento obrigatório.',
+            'Instruções é de preenchimento obrigatório.',
           ),
           opening_hours: Yup.string().required(
-            'O campo Horário das visitas é de preenchimento obrigatório.',
+            'Horário das visitas é de preenchimento obrigatório.',
           ),
           open_on_weekends: Yup.boolean().nullable(),
         });
@@ -103,7 +114,7 @@ const CreateOrphanage: React.FC = () => {
           description: 'Seu cadastro foi realizado sucesso.',
         });
 
-        history.goBack();
+        history.push('/private/app');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -111,6 +122,8 @@ const CreateOrphanage: React.FC = () => {
           formRef.current?.setErrors(errors);
         }
         console.log(err); // eslint-disable-line
+
+        focusNameInput();
       }
     },
     [images, position, addToast, history, open_on_weekends],
@@ -141,13 +154,22 @@ const CreateOrphanage: React.FC = () => {
     setPreviewImages(selectedImagesPreview);
   }
 
+  function focusNameInput() {
+    const nameInput = formRef.current?.getFieldRef('name');
+
+    nameInput.focus();
+  }
+
+  useEffect(() => {
+    setPosition({
+      latitude: latitudeInput || 0,
+      longitude: longitudeInput || 0,
+    });
+  }, [latitudeInput, longitudeInput]);
+
   return (
     <Container>
       <Sidebar />
-
-      <UserAvatar onClick={signOut} type="button">
-        <FiPower size={25} />
-      </UserAvatar>
 
       <main>
         <Form
@@ -158,15 +180,31 @@ const CreateOrphanage: React.FC = () => {
           <fieldset>
             <legend>Dados</legend>
 
-            <span className="alert">
-              <FiAlertCircle size={18} />
-              Clique no mapa para marcar a localização desejada.
-            </span>
+            <div className="input-block input-block--small">
+              <Input
+                name="latitude"
+                label="Latitude"
+                placeholder="Insira a latitude"
+                onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
+                  const setValueToNumber = Number(ev.target.value);
+                  setLatitudeInput(setValueToNumber);
+                }}
+              />
+              <Input
+                name="longitude"
+                label="Longitude"
+                placeholder="Insira a longitude"
+                onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
+                  const setValueToNumber = Number(ev.target.value);
+                  setLongitudeInput(setValueToNumber);
+                }}
+              />
+            </div>
 
             <Map
               center={[-25.4321587, -49.2796673]}
               style={{ width: '100%', height: 280 }}
-              zoom={15}
+              zoom={10}
               onClick={handleMapClick}
             >
               <TileLayer
@@ -181,6 +219,11 @@ const CreateOrphanage: React.FC = () => {
                 />
               )}
             </Map>
+            <span className="alert">
+              <FiAlertCircle size={18} />
+              Clique no mapa para marcar a localização ou insira a latitude e
+              longitude desejada.
+            </span>
 
             <div className="input-block">
               <Input
