@@ -43,7 +43,7 @@ export const Container = styled.div`
     .leaflet-container {
       border: solid 1px #d3e2e5;
       border-radius: 20px;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
     }
 
     .alert {
@@ -51,8 +51,8 @@ export const Container = styled.div`
       color: #8fa7b3;
       display: flex;
       font-size: 12px;
-      margin-left: 15px;
-      margin-bottom: 10px;
+      /* margin-left: 15px; */
+      margin-bottom: 30px;
 
       svg {
         margin-right: 5px;
@@ -187,6 +187,23 @@ export const Container = styled.div`
           }
         }
       }
+
+      &--small {
+        display: flex;
+        margin-bottom: 20px;
+
+        > div {
+          width: 100%;
+
+          + div {
+            margin-left: 30px;
+          }
+
+          input {
+            height: 48px;
+          }
+        }
+      }
     }
 
     button.confirm-button {
@@ -216,29 +233,3 @@ export const Container = styled.div`
 `;
 
 export const ToggleWrapper = styled.div``;
-
-export const UserAvatar = styled.button`
-  align-items: center;
-  background-color: ${colors.white};
-  border-radius: 50%;
-  border: 2px solid ${colors.white};
-  cursor: pointer;
-  display: flex;
-  height: 3.3rem;
-  justify-content: center;
-  padding: 0.3rem;
-  position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
-  transition: all 300ms ease;
-  width: 3.3rem;
-  z-index: 1;
-
-  &:hover {
-    opacity: 0.5;
-  }
-
-  svg {
-    stroke: ${colors.danger};
-  }
-`;
