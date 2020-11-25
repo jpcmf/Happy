@@ -20,6 +20,7 @@ const Routes: React.FC = () => {
 
       <Route path="/orphanages/create" isPrivate component={CreateOrphanage} />
       <Route path="/orphanages/:id" component={Orphanage} />
+      <Route path="/private/app" isPrivate component={OrphanagesMap} />
     </Switch>
   );
 };
