@@ -8,7 +8,7 @@ import landingImg from '../../assets/landing.png';
 
 export const Container = styled.div`
   align-items: center;
-  background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+  /* background: var(--gradient-landing-page); */
   display: flex;
   height: 100vh;
   justify-content: center;

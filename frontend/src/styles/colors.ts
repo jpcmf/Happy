@@ -19,4 +19,5 @@ export default {
   marrom: '#8D734B',
   green: '#37C77F',
   lightGreen: '#3EE08F',
+  gradientLandingPage: 'linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%)',
 };

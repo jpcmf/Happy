@@ -5,6 +5,12 @@ import colors from './colors';
 import './animations.css';
 
 export default createGlobalStyle`
+  :root {
+    --background-color: ${colors.gray};
+    --color: ${colors.white};
+    --gradient-landing-page: ${colors.gradientLandingPage};
+  }
+
   * {
       box-sizing: border-box;
       margin: 0;
@@ -26,8 +32,10 @@ export default createGlobalStyle`
 
     body {
       -webkit-font-smoothing: antialiased !important;
-      background-color: ${colors.gray};
-      color: ${colors.white};
+      background-color: var(--background-color);
+      color: var(--color);
+      transition: background-color 1000ms linear;
+      transition: color 1000ms linear;
     }
 
     body, input, button, textarea {
@@ -54,5 +62,9 @@ export default createGlobalStyle`
       margin-top: 5px;
       padding-right: 5px;
       text-align: right;
+    }
+
+    .container-lp {
+      background: var(--gradient-landing-page);
     }
 `;
