@@ -6,11 +6,17 @@ const themeColours = {
     color: `${colors.white}`,
     backgroundColor: `${colors.gray}`,
     backgroundGradientLP: `${colors.gradientLandingPage}`,
+    buttonColorLP: `${colors.yellow}`,
+    buttonIconColorLP: `${colors.marrom}`,
+    cardBackgroundColor: `${colors.white}`,
   },
   dark: {
-    color: `${colors.brand}`,
-    backgroundColor: `${colors.primary}`,
-    backgroundGradientLP: `${colors.danger}`,
+    color: `${colors.greenLightest}`,
+    backgroundColor: `${colors.dark}`,
+    backgroundGradientLP: `${colors.gradientLandingPageDark}`,
+    buttonColorLP: `${colors.darkBlue}`,
+    buttonIconColorLP: `${colors.midBlue}`,
+    cardBackgroundColor: `${colors.darkGrey}`,
   },
 };
 
@@ -20,6 +26,7 @@ type ThemeContextType = {
   setTheme: (name: ThemeName) => void;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const ThemeContext = createContext<ThemeContextType>(undefined!);
 
 // type Props = {
@@ -43,6 +50,18 @@ export const ThemeProvider: React.FC = ({ children }) => {
     document.body.style.setProperty(
       '--gradient-landing-page',
       themeColours[name].backgroundGradientLP,
+    );
+    document.body.style.setProperty(
+      '--button-color-landing-page',
+      themeColours[name].buttonColorLP,
+    );
+    document.body.style.setProperty(
+      '--button-icon-color-landing-page',
+      themeColours[name].buttonIconColorLP,
+    );
+    document.body.style.setProperty(
+      '--card-background-color',
+      themeColours[name].cardBackgroundColor,
     );
     setThemeName(name);
   };

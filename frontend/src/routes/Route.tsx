@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { useAuth } from '../hooks/auth';
+import { useTheme } from '../hooks/theme';
 
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
@@ -18,13 +19,25 @@ const Route: React.FC<RouteProps> = ({
   ...rest
 }) => {
   const { user } = useAuth();
+  const { theme, setTheme } = useTheme();
 
   return (
     <ReactDOMRoute
       {...rest}
       render={({ location }) => {
         return isPrivate === !!user ? (
-          <Component />
+          <>
+            <button
+              type="button"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="dark-switch"
+            >
+              {theme === 'dark'
+                ? 'Switch to light mode'
+                : 'switch to dark mode'}
+            </button>
+            <Component />
+          </>
         ) : (
           <Redirect
             to={{

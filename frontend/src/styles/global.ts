@@ -9,6 +9,9 @@ export default createGlobalStyle`
     --background-color: ${colors.gray};
     --color: ${colors.white};
     --gradient-landing-page: ${colors.gradientLandingPage};
+    --button-color-landing-page: ${colors.yellow};
+    --button-icon-color-landing-page: ${colors.marrom};
+    --card-background-color: ${colors.white};
   }
 
   * {
@@ -66,5 +69,12 @@ export default createGlobalStyle`
 
     .container-lp {
       background: var(--gradient-landing-page);
+    }
+
+    .dark-switch {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
     }
 `;

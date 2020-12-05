@@ -5,21 +5,10 @@ import { Container, Wrapper, Main, Location, Button } from './styles';
 import { ReactComponent as LogoImg } from '../../assets/logo.svg';
 import { ReactComponent as ArrowLeftImg } from '../../assets/arrow-left.svg';
 
-import { useTheme } from '../../hooks/theme';
-
 const Home: React.FC = () => {
-  const { theme, setTheme } = useTheme();
-
   return (
     <>
       <Container className="container-lp">
-        <button
-          type="button"
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        >
-          {theme === 'dark' ? 'Switch to light mode' : 'switch to dark mode'}
-        </button>
-
         <Wrapper>
           <LogoImg />
 

@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   height: 100%;
   justify-content: space-between;
   max-height: 650px;
-  max-width: 1100px;
+  max-width: 1300px;
   position: relative;
   width: 100%;
 `;
@@ -68,7 +68,7 @@ export const Location = styled.div`
 
 export const Button = styled(Link)`
   align-items: center;
-  background-color: ${colors.yellow};
+  background-color: var(--button-color-landing-page);
   border-radius: 30px;
   bottom: 0;
   display: flex;
@@ -80,7 +80,7 @@ export const Button = styled(Link)`
   transition: all 300ms ease;
 
   svg {
-    fill: ${colors.marrom};
+    fill: var(--button-icon-color-landing-page);
   }
 
   &:hover {

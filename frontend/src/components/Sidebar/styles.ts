@@ -5,7 +5,7 @@ import colors from '../../styles/colors';
 export const Aside = styled.aside`
   animation: 700ms ease 0s 1 slideInFromLeft100;
   align-items: center;
-  background: linear-gradient(329.54deg, #15b6d6 0%, #15d6d6 100%);
+  background: var(--gradient-landing-page);
   display: flex;
   flex-direction: column;
   height: 100vh;
