@@ -8,7 +8,7 @@ import { ReactComponent as ArrowLeftImg } from '../../assets/arrow-left.svg';
 const Home: React.FC = () => {
   return (
     <>
-      <Container>
+      <Container className="container-lp">
         <Wrapper>
           <LogoImg />
 

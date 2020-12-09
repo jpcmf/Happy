@@ -17,6 +17,12 @@ export default {
   lightBlue: '#17D6EB',
   darkBlue: '#0089A5',
   marrom: '#8D734B',
+
   green: '#37C77F',
-  lightGreen: '#3EE08F',
+  greenLight: '#3EE08F',
+  greenLightest: '#0df2b1',
+
+  gradientLandingPage: 'linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%)',
+  gradientLandingPageDark:
+    'linear-gradient(329.54deg, #005566 0%, #007f99 100%)',
 };

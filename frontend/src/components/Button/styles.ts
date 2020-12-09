@@ -17,6 +17,6 @@ export const Container = styled.button`
 
   &:hover {
     background-color: ${(props): string =>
-      props && shade(0.2, colors.lightGreen)};
+      props && shade(0.2, colors.greenLight)};
   }
 `;

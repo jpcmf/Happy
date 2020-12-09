@@ -11,9 +11,9 @@ export const Container = styled.div`
 
   form.create-orphanage-form {
     animation: 500ms ease-out 0s 1 slideInFromUp;
-    background-color: ${colors.white};
+    background-color: var(--card-background-color);
     border-radius: 20px;
-    border: 1px solid #d3e2e5;
+    /* border: 1px solid #d3e2e5; */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin: 64px auto;
