@@ -32,7 +32,7 @@ export const Container = styled.div`
         width: 100%;
         font-size: 32px;
         line-height: 34px;
-        color: #5c8599;
+        color: var(--form-legend-text-color);
         font-weight: 700;
         border-bottom: 1px solid #d3e2e5;
         margin-bottom: 40px;
@@ -60,9 +60,9 @@ export const Container = styled.div`
       }
 
       input {
-        background: #f5f8fa;
+        background: var(--form-input-background-color);
         border-radius: 20px;
-        border: 1px solid #d3e2e5;
+        border: 1px solid var(--form-input-background-color);
         color: #5c8599;
         height: 64px;
         outline: none;

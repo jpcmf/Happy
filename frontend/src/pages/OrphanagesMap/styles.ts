@@ -70,7 +70,7 @@ export const MapWrapper = styled.div`
 
     .leaflet-popup-content {
       align-items: center;
-      color: ${colors.darkBlue};
+      color: ${colors.blueDark};
       display: flex;
       font-size: 16px;
       font-weight: 700;
@@ -80,7 +80,7 @@ export const MapWrapper = styled.div`
 
       a {
         align-items: center;
-        background-color: ${colors.midBlue};
+        background-color: ${colors.blueSkyMid};
         border-radius: 12px;
         box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
         display: flex;
@@ -99,7 +99,7 @@ export const MapWrapper = styled.div`
 
 export const Button = styled(Link)`
   align-items: center;
-  background-color: ${colors.midBlue};
+  background-color: var(--button-color-actions);
   border-radius: 20px;
   bottom: 40px;
   display: flex;

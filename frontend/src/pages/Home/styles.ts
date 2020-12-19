@@ -84,10 +84,10 @@ export const Button = styled(Link)`
   }
 
   &:hover {
-    background-color: ${colors.blue};
+    background-color: ${colors.blueSky};
 
     svg {
-      fill: ${colors.midBlue};
+      fill: ${colors.blueSkyMid};
     }
   }
 `;

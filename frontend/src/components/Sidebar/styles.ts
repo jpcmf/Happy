@@ -27,7 +27,7 @@ export const Aside = styled.aside`
 
     border: 0;
 
-    background: #12afcb;
+    background: var(--button-color-actions);
     border-radius: 16px;
 
     cursor: pointer;
