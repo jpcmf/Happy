@@ -27,7 +27,7 @@ export const Aside = styled.aside`
 
     border: 0;
 
-    background: #12afcb;
+    background: var(--button-color-actions);
     border-radius: 16px;
 
     cursor: pointer;
@@ -41,7 +41,7 @@ export const Aside = styled.aside`
 
   footer a:hover,
   footer .button:hover {
-    background: #17d6eb;
+    background: var(--button-hover-color-actions);
   }
 `;
 

@@ -11,7 +11,7 @@ interface ContainerProps {
 const toastTypeVariations = {
   info: css`
     background-color: ${colors.lightBlue};
-    color: ${colors.darkBlue};
+    color: ${colors.blueDark};
   `,
   success: css`
     background-color: ${colors.success};

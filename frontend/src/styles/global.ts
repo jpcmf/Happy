@@ -11,7 +11,11 @@ export default createGlobalStyle`
     --gradient-landing-page: ${colors.gradientLandingPage};
     --button-color-landing-page: ${colors.yellow};
     --button-icon-color-landing-page: ${colors.marrom};
+    --button-color-actions: ${colors.blueSkyLighter};
+    --button-hover-color-actions: ${colors.blueSky};
     --card-background-color: ${colors.white};
+    --form-legend-text-color: ${colors.grayMid};
+    --form-input-background-color: ${colors.white};
   }
 
   * {
@@ -76,5 +80,37 @@ export default createGlobalStyle`
       top: 10px;
       right: 10px;
       z-index: 3;
+
+      .react-toggle {
+        &--checked {
+          .react-toggle-track{
+            background:var(--gradient-landing-page);
+          }
+          .react-toggle-thumb{
+            left: 33px;
+          }
+        }
+      }
+
+      .react-toggle-track {
+        width: 62px;
+        height: 32px;
+      }
+
+      .react-toggle-thumb {
+        top: 2px;
+        width: 28px;
+        height: 28px;
+      }
+
+
+
+      .react-toggle-track-check,
+      .react-toggle-track-x {
+        display: flex;
+        align-items: center;
+        height: auto;
+        width: auto;
+      }
     }
 `;

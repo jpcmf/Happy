@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   Route as ReactDOMRoute,
   RouteProps as ReactDOMRouteProps,
@@ -7,6 +7,7 @@ import {
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
+import { BsMoon, BsSun } from 'react-icons/bs';
 import { ToogleSwitch } from '../components';
 
 import { useAuth } from '../hooks/auth';
@@ -26,21 +27,13 @@ const Route: React.FC<RouteProps> = ({
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
 
-  const [lalala, setLalala] = useState(false);
-
-  function handleToggle(event: boolean) {
-    console.log(event); // eslint-disable-line
-    setLalala(event);
-    // setOpenOnWeekends(event);
-  }
-
   return (
     <ReactDOMRoute
       {...rest}
       render={({ location }) => {
         return isPrivate === !!user ? (
           <>
-            <button
+            {/* <button
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="dark-switch"
@@ -48,22 +41,29 @@ const Route: React.FC<RouteProps> = ({
               {theme === 'dark'
                 ? 'Switch to light mode'
                 : 'switch to dark mode'}
-            </button>
+            </button> */}
 
-            <Form
-              onSubmit={() => {
-                // do nothing.
-              }}
-              ref={formRef}
-            >
-              <ToogleSwitch
-                // checked={lalala}
-                id="toggle"
-                name="toggle"
-                value="dark"
-                onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              />
-            </Form>
+            <div className="dark-switch">
+              <Form
+                onSubmit={() => {
+                  // do nothing.
+                }}
+                ref={formRef}
+              >
+                <ToogleSwitch
+                  // checked={lalala}
+                  id="toggle"
+                  name="toggle"
+                  value="dark"
+                  onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  icons={{
+                    checked: <BsSun />,
+                    unchecked: <BsMoon />,
+                  }}
+                />
+              </Form>
+            </div>
+
             <Component />
           </>
         ) : (

@@ -8,15 +8,23 @@ const themeColours = {
     backgroundGradientLP: `${colors.gradientLandingPage}`,
     buttonColorLP: `${colors.yellow}`,
     buttonIconColorLP: `${colors.marrom}`,
+    buttonColorActions: `${colors.blueSkyLighter}`,
+    buttonHoverColorActions: `${colors.blueSkyMid}`,
     cardBackgroundColor: `${colors.white}`,
+    formLegendText: `${colors.grayMid}`,
+    formInputBackground: `${colors.grayLightest}`,
   },
   dark: {
     color: `${colors.greenLightest}`,
-    backgroundColor: `${colors.dark}`,
+    backgroundColor: `${colors.blueDark}`,
     backgroundGradientLP: `${colors.gradientLandingPageDark}`,
-    buttonColorLP: `${colors.darkBlue}`,
-    buttonIconColorLP: `${colors.midBlue}`,
-    cardBackgroundColor: `${colors.darkGrey}`,
+    buttonColorLP: `${colors.blueDark}`,
+    buttonIconColorLP: `${colors.blueSkyMid}`,
+    buttonColorActions: `${colors.blue}`,
+    buttonHoverColorActions: `${colors.blueDark}`,
+    cardBackgroundColor: `${colors.blueMid}`,
+    formLegendText: `${colors.white}`,
+    formInputBackground: `${colors.blueDark}`,
   },
 };
 
@@ -60,9 +68,26 @@ export const ThemeProvider: React.FC = ({ children }) => {
       themeColours[name].buttonIconColorLP,
     );
     document.body.style.setProperty(
+      '--button-color-actions',
+      themeColours[name].buttonColorActions,
+    );
+    document.body.style.setProperty(
+      '--button-hover-color-actions',
+      themeColours[name].buttonHoverColorActions,
+    );
+    document.body.style.setProperty(
       '--card-background-color',
       themeColours[name].cardBackgroundColor,
     );
+    document.body.style.setProperty(
+      '--form-legend-text-color',
+      themeColours[name].formLegendText,
+    );
+    document.body.style.setProperty(
+      '--form-input-background-color',
+      themeColours[name].formInputBackground,
+    );
+
     setThemeName(name);
   };
 
