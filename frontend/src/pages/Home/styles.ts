@@ -68,7 +68,7 @@ export const Location = styled.div`
 
 export const Button = styled(Link)`
   align-items: center;
-  background-color: var(--button-color-landing-page);
+  background-color: var(--button-color-actions);
   border-radius: 30px;
   bottom: 0;
   display: flex;
@@ -80,14 +80,14 @@ export const Button = styled(Link)`
   transition: all 300ms ease;
 
   svg {
-    fill: var(--button-icon-color-landing-page);
+    fill: ${colors.white};
   }
 
   &:hover {
-    background-color: ${colors.blueSky};
+    background-color: var(--button-hover-color-actions);
 
     svg {
-      fill: ${colors.blueSkyMid};
+      fill: ${colors.white};
     }
   }
 `;

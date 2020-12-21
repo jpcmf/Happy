@@ -11,9 +11,9 @@ export const Container = styled.div`
   }
 
   .orphanage-details {
-    background: #ffffff;
+    background: var(--card-background-color);
     border-radius: 20px;
-    border: 1px solid #d3e2e5;
+    /* border: 1px solid #d3e2e5; */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin: 64px auto;
@@ -63,7 +63,7 @@ export const Container = styled.div`
       padding: 80px;
 
       h1 {
-        color: #4d6f80;
+        color: var(--form-legend-text-color);
         font-size: 45px;
         line-height: 54px;
         margin-bottom: 8px;
@@ -71,7 +71,7 @@ export const Container = styled.div`
 
       p {
         line-height: 28px;
-        color: #5c8599;
+        color: var(--form-legend-text-color);
         margin-top: 24px;
       }
 
@@ -107,9 +107,9 @@ export const Container = styled.div`
       }
 
       h2 {
+        color: var(--form-legend-text-color);
         font-size: 36px;
         line-height: 46px;
-        color: #4d6f80;
       }
 
       .open-details {

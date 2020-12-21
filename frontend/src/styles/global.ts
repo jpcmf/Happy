@@ -12,6 +12,7 @@ export default createGlobalStyle`
     --button-color-landing-page: ${colors.yellow};
     --button-icon-color-landing-page: ${colors.marrom};
     --button-color-actions: ${colors.blueSkyLighter};
+    --button-hover-color-actions: ${colors.blueSky};
     --card-background-color: ${colors.white};
     --form-legend-text-color: ${colors.grayMid};
     --form-input-background-color: ${colors.white};

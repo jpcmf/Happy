@@ -80,7 +80,7 @@ export const MapWrapper = styled.div`
 
       a {
         align-items: center;
-        background-color: ${colors.blueSkyMid};
+        background-color: var(--button-color-actions);
         border-radius: 12px;
         box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
         display: flex;
@@ -88,6 +88,11 @@ export const MapWrapper = styled.div`
         justify-content: center;
         width: 40px;
         flex-shrink: 0;
+        transition: background-color 300ms ease;
+
+        &:hover {
+          background-color: var(--button-hover-color-actions);
+        }
       }
     }
 
@@ -112,6 +117,6 @@ export const Button = styled(Link)`
   z-index: 1;
 
   &:hover {
-    background-color: ${colors.lightBlue};
+    background-color: var(--button-hover-color-actions);
   }
 `;

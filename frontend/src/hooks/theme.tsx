@@ -9,6 +9,7 @@ const themeColours = {
     buttonColorLP: `${colors.yellow}`,
     buttonIconColorLP: `${colors.marrom}`,
     buttonColorActions: `${colors.blueSkyLighter}`,
+    buttonHoverColorActions: `${colors.blueSkyMid}`,
     cardBackgroundColor: `${colors.white}`,
     formLegendText: `${colors.grayMid}`,
     formInputBackground: `${colors.grayLightest}`,
@@ -20,6 +21,7 @@ const themeColours = {
     buttonColorLP: `${colors.blueDark}`,
     buttonIconColorLP: `${colors.blueSkyMid}`,
     buttonColorActions: `${colors.blue}`,
+    buttonHoverColorActions: `${colors.blueDark}`,
     cardBackgroundColor: `${colors.blueMid}`,
     formLegendText: `${colors.white}`,
     formInputBackground: `${colors.blueDark}`,
@@ -68,6 +70,10 @@ export const ThemeProvider: React.FC = ({ children }) => {
     document.body.style.setProperty(
       '--button-color-actions',
       themeColours[name].buttonColorActions,
+    );
+    document.body.style.setProperty(
+      '--button-hover-color-actions',
+      themeColours[name].buttonHoverColorActions,
     );
     document.body.style.setProperty(
       '--card-background-color',
