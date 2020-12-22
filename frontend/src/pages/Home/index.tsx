@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Wrapper, Main, Location, Button } from './styles';
 
-import { ReactComponent as LogoImg } from '../../assets/logo.svg';
+import { ReactComponent as LogoImg } from '../../assets/logo-v2.svg';
 import { ReactComponent as ArrowLeftImg } from '../../assets/arrow-left.svg';
 
 const Home: React.FC = () => {

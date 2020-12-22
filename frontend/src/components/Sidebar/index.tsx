@@ -5,7 +5,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { FiPower } from 'react-icons/fi';
 import { Aside, MarkerWrapper, LogoutButton } from './styles';
 
-import { ReactComponent as MarkerImg } from '../../assets/marker.svg';
+import { ReactComponent as MarkerImg } from '../../assets/marker-v2.svg';
 
 import { useAuth } from '../../hooks/auth';
 

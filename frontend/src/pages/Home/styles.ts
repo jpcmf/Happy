@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import colors from '../../styles/colors';
 
-import landingImg from '../../assets/landing.png';
+import landingImg from '../../assets/landing-v2.png';
 
 export const Container = styled.div`
   align-items: center;
@@ -18,7 +18,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   animation: 1000ms ease-out 0s 1 fadeIn;
   align-items: flex-start;
-  background: url(${landingImg}) no-repeat 80% center;
+  background: url(${landingImg}) no-repeat 72% center;
   background-size: 48%;
   display: flex;
   flex-direction: column;
