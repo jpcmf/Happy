@@ -77,33 +77,39 @@ export default createGlobalStyle`
 
     .dark-switch {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 20px;
+      right: 20px;
       z-index: 3;
 
       .react-toggle {
         &--checked {
-          .react-toggle-track{
-            background:var(--gradient-landing-page);
+          &:hover:not(.react-toggle--disabled) .react-toggle-track {
+            background-color: ${colors.blueSkyMid};
           }
-          .react-toggle-thumb{
-            left: 33px;
+
+          .react-toggle-track{
+            background: var(--button-color-actions);
+          }
+          .react-toggle-thumb {
+            border-color: ${colors.white};
+            left: 32px;
           }
         }
       }
 
       .react-toggle-track {
-        width: 62px;
+        background: var(--button-color-actions);
         height: 32px;
+        width: 62px;
       }
 
       .react-toggle-thumb {
-        top: 2px;
-        width: 28px;
-        height: 28px;
+        border-color: ${colors.white};
+        height: 26px;
+        top: 3px;
+        width: 27px;
+        left: 3px;
       }
-
-
 
       .react-toggle-track-check,
       .react-toggle-track-x {
