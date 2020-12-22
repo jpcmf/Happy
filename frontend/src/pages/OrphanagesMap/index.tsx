@@ -4,6 +4,7 @@ import { FiArrowRight, FiPlus } from 'react-icons/fi';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import mapIcon from 'utils/mapIcon';
+import { useTheme } from 'hooks/theme';
 import colors from '../../styles/colors';
 import { Container, Aside, MapWrapper, Button } from './styles';
 
@@ -26,6 +27,7 @@ const Orphanages: React.FC = () => {
     latitude: mapDefaultPosition.latitude,
     longitude: mapDefaultPosition.longitude,
   });
+  const { theme } = useTheme();
 
   useEffect(() => {
     api.get('/orphanages').then((response) => {
@@ -69,7 +71,7 @@ const Orphanages: React.FC = () => {
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             /> */}
           <TileLayer
-            url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+            url={`https://api.mapbox.com/styles/v1/mapbox/${theme}-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
           />
           {orphanages.map((orphanage) => (
             <Marker

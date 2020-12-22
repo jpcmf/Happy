@@ -77,8 +77,8 @@ export default createGlobalStyle`
 
     .dark-switch {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 30px;
+      right: 30px;
       z-index: 3;
 
       .react-toggle {
