@@ -98,4 +98,4 @@ export const ThemeProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextType => useContext(ThemeContext);
