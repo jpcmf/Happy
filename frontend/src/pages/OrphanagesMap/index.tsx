@@ -8,7 +8,7 @@ import { useTheme } from 'hooks/theme';
 import colors from '../../styles/colors';
 import { Container, Aside, MapWrapper, Button } from './styles';
 
-import { ReactComponent as MarkerImg } from '../../assets/marker-v2.svg';
+import { ReactComponent as MarkerImg } from '../../assets/logo-v2.svg';
 
 import api from '../../services/api';
 

@@ -79,7 +79,7 @@ export default createGlobalStyle`
       position: absolute;
       top: 30px;
       right: 30px;
-      z-index: 3;
+      z-index: 5;
 
       .react-toggle {
         &--checked {
