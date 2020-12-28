@@ -22,21 +22,16 @@ export const Aside = styled.aside`
 
   footer a,
   footer .button {
-    width: 48px;
-    height: 48px;
-
-    border: 0;
-
-    background: var(--button-color-actions);
-    border-radius: 16px;
-
-    cursor: pointer;
-
-    transition: background-color 0.2s;
-
-    display: flex;
-    justify-content: center;
     align-items: center;
+    background: var(--button-color-actions);
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    transition: background-color 0.2s;
+    width: 48px;
   }
 
   footer a:hover,

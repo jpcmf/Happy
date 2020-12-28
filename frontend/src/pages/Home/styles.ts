@@ -38,6 +38,9 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
   }
+  @media ${device.laptopL} {
+    padding: 0;
+  }
 `;
 
 export const Main = styled.div`
@@ -101,6 +104,10 @@ export const Location = styled.div`
     text-align: right;
     top: 0;
   }
+
+  @media ${device.laptopL} {
+    right: 0;
+  }
 `;
 
 export const Button = styled(Link)`
@@ -131,5 +138,9 @@ export const Button = styled(Link)`
     position: absolute;
     right: 32px;
     bottom: 0;
+  }
+
+  @media ${device.laptopL} {
+    right: 0;
   }
 `;
