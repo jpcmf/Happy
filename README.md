@@ -27,16 +27,17 @@
   <a href="#coffee-back-end">Back end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#computer-front-end">Front end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#iphone-mobile">Mobile</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
+  <a href="#memo-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#popcorn-live-version">Live version</a>
 </p>
 
 # Build Setup
 
 The project requires [Node.js](https://nodejs.org/) and [Docker](https://docs.docker.com/install/) to run locally.
 
-## ☕ Back end
+## :coffee: Back end
 
-## 💻 Front end [![Netlify Status](https://api.netlify.com/api/v1/badges/71fc5e42-ac2a-4a45-a9ff-17c2886db1c1/deploy-status)](https://app.netlify.com/sites/happy-happy/deploys)
+## :computer: Front end
 
 After cloning the repository, go to the folder named `frontend` and install all the dependencies required and run the project by using the command `yarn start`.
 
@@ -50,11 +51,17 @@ yarn install
 yarn start
 ```
 
-## 📱 Mobile
+## :iphone: Mobile
 
 # :memo: License
 
 This project is under the MIT license. See the [LICENSE](LICENSE.md) file for more details.
+
+# :popcorn: Live version
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/71fc5e42-ac2a-4a45-a9ff-17c2886db1c1/deploy-status)](https://app.netlify.com/sites/happy-happy/deploys)
+
+https://happy-happy.netlify.app
 
 ---
 
