@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { device } from 'styles/device';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
   height: 100vh;
+  flex-direction: column;
 
   main {
     flex: 1;
@@ -11,15 +13,20 @@ export const Container = styled.div`
 
   form.create-orphanage-form {
     animation: 500ms ease-out 0s 1 slideInFromUp;
-    background: #ffffff;
-    border-radius: 20px;
-    border: 1px solid #d3e2e5;
+    background: var(--card-background-color);
+    /* border: 1px solid #d3e2e5; */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin: 64px auto;
     overflow: hidden;
-    padding: 64px 80px;
-    width: 700px;
+    padding: 32px 16px;
+    max-width: 700px;
+    width: 100%;
+
+    @media ${device.tablet} {
+      border-radius: 20px;
+      padding: 64px 80px;
+    }
 
     fieldset {
       border: 0;
@@ -32,7 +39,7 @@ export const Container = styled.div`
         width: 100%;
         font-size: 32px;
         line-height: 34px;
-        color: #5c8599;
+        color: var(--form-legend-text-color);
         font-weight: 700;
         border-bottom: 1px solid #d3e2e5;
         margin-bottom: 40px;
@@ -66,7 +73,7 @@ export const Container = styled.div`
 
       label {
         display: flex;
-        color: #8fa7b3;
+        color: var(--form-legend-text-color);
         margin-bottom: 8px;
         line-height: 24px;
 
@@ -81,11 +88,15 @@ export const Container = styled.div`
       input,
       textarea {
         width: 100%;
-        background: #f5f8fa;
-        border: 1px solid #d3e2e5;
-        border-radius: 20px;
+        background: var(--form-input-background-color);
+        border: 1px solid var(--form-input-background-color);
+        border-radius: 10px;
         outline: none;
         color: #5c8599;
+
+        @media ${device.tablet} {
+          border-radius: 20px;
+        }
 
         &::placeholder {
           color: #cedee5;
@@ -154,6 +165,7 @@ export const Container = styled.div`
         height: 96px;
         justify-content: center;
         margin: 0;
+        width: 96px;
       }
 
       input[type='file'] {
