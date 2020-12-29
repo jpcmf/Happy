@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import { device } from '../../styles/device';
 
 export const Container = styled.div`
   animation: 500ms ease-out 0s 1 fadeIn;
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
+
+  @media ${device.laptop} {
+    flex-direction: column;
+  }
 
   main {
     flex: 1;
@@ -18,7 +24,12 @@ export const Container = styled.div`
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin: 64px auto;
     overflow: hidden;
-    width: 700px;
+    max-width: 700px;
+    width: 100%;
+
+    @media ${device.laptop} {
+      /* flex-direction: column; */
+    }
 
     > img {
       width: 100%;
@@ -73,6 +84,23 @@ export const Container = styled.div`
         line-height: 28px;
         color: var(--form-legend-text-color);
         margin-top: 24px;
+      }
+
+      textarea {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        color: var(--form-legend-text-color);
+        display: flex;
+        height: 100%;
+        height: 50vh;
+        line-height: 28px;
+        margin-top: 32px;
+        outline: none;
+        overflow: auto;
+        padding: 0 32px 0 0;
+        resize: none; /*remove the resize handle on the bottom right*/
+        width: 100%;
       }
 
       .map-container {

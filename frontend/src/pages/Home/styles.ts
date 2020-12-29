@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-
 import { Link } from 'react-router-dom';
-
 import colors from '../../styles/colors';
-
-import landingImg from '../../assets/landing-v2.png';
-
 import { device } from '../../styles/device';
+import landingImg from '../../assets/landing-v2.png';
 
 export const Container = styled.div`
   align-items: center;

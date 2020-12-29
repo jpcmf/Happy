@@ -1,20 +1,36 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import colors from '../../styles/colors';
+import { device } from '../../styles/device';
 
 export const Aside = styled.aside`
-  animation: 700ms ease 0s 1 slideInFromLeft100;
   align-items: center;
+  animation: 700ms ease 0s 1 slideInFromLeft100;
   background: var(--gradient-landing-page);
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
-  padding: 32px 24px;
-  position: fixed;
+  justify-content: flex-start;
+  padding: 14px 24px;
+  width: 100%;
 
-  svg {
-    width: 48px;
+  @media ${device.laptop} {
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 32px 24px;
+    position: fixed;
+    width: auto;
+  }
+
+  a {
+    display: none;
+
+    svg {
+      width: 48px;
+    }
+
+    @media ${device.laptop} {
+      display: block;
+    }
   }
 
   footer {
@@ -41,7 +57,9 @@ export const Aside = styled.aside`
 `;
 
 export const MarkerWrapper = styled(Link)`
-  animation: float 6s ease-in-out infinite;
+  @media ${device.laptop} {
+    animation: float 6s ease-in-out infinite;
+  }
 `;
 
 export const LogoutButton = styled.button`
