@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import { device } from '../../styles/device';
 
 export const Container = styled.div`
   animation: 500ms ease-out 0s 1 fadeIn;
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
+
+  /* @media ${device.laptop} {
+    flex-direction: row;
+  } */
 
   main {
     flex: 1;
@@ -12,13 +18,17 @@ export const Container = styled.div`
 
   .orphanage-details {
     background: var(--card-background-color);
-    border-radius: 20px;
     /* border: 1px solid #d3e2e5; */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin: 64px auto;
     overflow: hidden;
-    width: 700px;
+    max-width: 700px;
+    width: 100%;
+
+    @media ${device.tablet} {
+      border-radius: 20px;
+    }
 
     > img {
       width: 100%;
@@ -30,18 +40,28 @@ export const Container = styled.div`
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       column-gap: 16px;
-      margin: 16px 40px 0;
+      margin: 16px;
+
+      @media ${device.laptop} {
+        margin-left: 40px;
+        margin-right: 40px;
+      }
 
       button {
         border: 0;
         height: 88px;
         background: none;
         cursor: pointer;
-        border-radius: 20px;
+        border-radius: 10px;
         overflow: hidden;
         outline: none;
         opacity: 0.6;
         transition: opacity 300ms ease;
+        width: 88px;
+
+        @media ${device.tablet} {
+          border-radius: 20px;
+        }
 
         &:hover {
           opacity: 1;
@@ -60,7 +80,11 @@ export const Container = styled.div`
     }
 
     .orphanage-details-content {
-      padding: 80px;
+      padding: 32px;
+
+      @media ${device.laptop} {
+        padding: 80px;
+      }
 
       h1 {
         color: var(--form-legend-text-color);
@@ -73,6 +97,23 @@ export const Container = styled.div`
         line-height: 28px;
         color: var(--form-legend-text-color);
         margin-top: 24px;
+      }
+
+      textarea {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        color: var(--form-legend-text-color);
+        display: flex;
+        height: 100%;
+        height: 25vh;
+        line-height: 28px;
+        margin-top: 32px;
+        outline: none;
+        overflow: auto;
+        padding: 0 32px 0 0;
+        resize: none; /*remove the resize handle on the bottom right*/
+        width: 100%;
       }
 
       .map-container {
@@ -115,17 +156,39 @@ export const Container = styled.div`
       .open-details {
         margin-top: 24px;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         column-gap: 20px;
+
+        @media ${device.tablet} {
+          grid-template-columns: 1fr 1fr;
+        }
 
         div {
           padding: 32px 24px;
-          border-radius: 20px;
+          border-radius: 10px;
           line-height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
 
           svg {
             display: block;
-            margin-bottom: 20px;
+            margin-right: 16px;
+          }
+
+          p {
+            margin-top: 0;
+          }
+
+          @media ${device.tablet} {
+            align-items: flex-start;
+            border-radius: 20px;
+            flex-direction: column;
+
+            svg {
+              margin-bottom: 16px;
+              margin-right: 0;
+            }
           }
         }
 
@@ -133,6 +196,11 @@ export const Container = styled.div`
           background: linear-gradient(149.97deg, #e6f7fb 8.13%, #ffffff 92.67%);
           border: 1px solid #b3dae2;
           color: #5c8599;
+          margin-bottom: 16px;
+
+          @media ${device.tablet} {
+            margin-bottom: 0;
+          }
         }
 
         div.open-on-weekends {

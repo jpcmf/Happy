@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { device } from 'styles/device';
 // import colors from '../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
   height: 100vh;
+  flex-direction: column;
+
+  /* @media ${device.laptop} {
+    flex-direction: row;
+  } */
 
   main {
     flex: 1;
@@ -12,14 +18,19 @@ export const Container = styled.div`
   form.create-orphanage-form {
     animation: 500ms ease-out 0s 1 slideInFromUp;
     background-color: var(--card-background-color);
-    border-radius: 20px;
     /* border: 1px solid #d3e2e5; */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin: 64px auto;
     overflow: hidden;
-    padding: 64px 80px;
-    width: 700px;
+    padding: 32px 16px;
+    max-width: 700px;
+    width: 100%;
+
+    @media ${device.tablet} {
+      border-radius: 20px;
+      padding: 64px 80px;
+    }
 
     fieldset {
       border: 0;
@@ -61,13 +72,17 @@ export const Container = styled.div`
 
       input {
         background: var(--form-input-background-color);
-        border-radius: 20px;
+        border-radius: 10px;
         border: 1px solid var(--form-input-background-color);
         color: #5c8599;
         height: 64px;
         outline: none;
         padding: 0 16px;
         width: 100%;
+
+        @media ${device.tablet} {
+          border-radius: 20px;
+        }
 
         &::placeholder {
           color: #cedee5;

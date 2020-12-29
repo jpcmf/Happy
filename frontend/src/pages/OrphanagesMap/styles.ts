@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-
 import { Link } from 'react-router-dom';
-
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
@@ -105,7 +103,7 @@ export const MapWrapper = styled.div`
 export const Button = styled(Link)`
   align-items: center;
   background-color: var(--button-color-actions);
-  border-radius: 20px;
+  border-radius: 50%;
   bottom: 40px;
   display: flex;
   height: 64px;
