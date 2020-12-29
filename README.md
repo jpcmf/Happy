@@ -36,7 +36,7 @@ The project requires [Node.js](https://nodejs.org/) and [Docker](https://docs.do
 
 ## ☕ Back end
 
-## 💻 Front end
+## 💻 Front end [![Netlify Status](https://api.netlify.com/api/v1/badges/71fc5e42-ac2a-4a45-a9ff-17c2886db1c1/deploy-status)](https://app.netlify.com/sites/happy-happy/deploys)
 
 After cloning the repository, go to the folder named `frontend` and install all the dependencies required and run the project by using the command `yarn start`.
 
