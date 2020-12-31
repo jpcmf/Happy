@@ -24,8 +24,10 @@ export const Wrapper = styled.div`
   max-width: 1300px;
   position: relative;
   width: 100%;
+  background: url(${landingImg}) no-repeat bottom center;
+  background-size: 50%;
 
-  padding: 0 32px;
+  padding: 0 32px 150px;
 
   @media ${device.laptop} {
     align-items: flex-start;
@@ -33,7 +35,9 @@ export const Wrapper = styled.div`
     background-size: 48%;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0 32px;
   }
+
   @media ${device.laptopL} {
     padding: 0;
   }
@@ -52,9 +56,9 @@ export const Main = styled.div`
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 900;
-    line-height: 40px;
+    line-height: 32px;
 
     @media ${device.laptop} {
       font-size: 76px;
@@ -63,10 +67,10 @@ export const Main = styled.div`
   }
 
   p {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 32px;
-    margin-top: 40px;
+    line-height: 24px;
+    margin-top: 24px;
 
     strong {
       border-bottom: solid 1px;
@@ -84,7 +88,7 @@ export const Location = styled.div`
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   strong {
     display: block;
@@ -115,6 +119,7 @@ export const Button = styled(Link)`
   justify-content: center;
   width: 40px;
   transition: all 300ms ease;
+  flex-shrink: 0;
 
   svg {
     fill: ${colors.white};

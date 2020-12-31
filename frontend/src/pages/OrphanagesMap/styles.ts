@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { device } from 'styles/device';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
@@ -7,6 +8,11 @@ export const Container = styled.div`
   position: relative;
   width: 100vw;
   display: flex;
+  flex-direction: column;
+
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
 `;
 
 export const Aside = styled.aside`
@@ -14,17 +20,28 @@ export const Aside = styled.aside`
   background: var(--gradient-landing-page);
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: space-between;
-  padding: 80px;
-  width: 440px;
+  padding: 32px;
+  width: 100%;
+
+  @media ${device.laptop} {
+    height: 100vh;
+    padding: 80px;
+    width: 440px;
+  }
 
   header {
     h2 {
-      font-size: 40px;
+      font-size: 32px;
       font-weight: 800;
-      line-height: 42px;
-      margin-top: 64px;
+      line-height: 32px;
+      margin-top: 16px;
+
+      @media ${device.laptop} {
+        margin-top: 64px;
+        font-size: 40px;
+        line-height: 42px;
+      }
     }
 
     p {
@@ -51,9 +68,12 @@ export const Aside = styled.aside`
 
 export const MapWrapper = styled.div`
   animation: 5000ms ease-out 0s 1 fadeIn;
-  flex: 1;
   height: 100%;
   width: 100%;
+
+  @media ${device.laptop} {
+    flex: 1;
+  }
 
   > div {
     z-index: 0;
