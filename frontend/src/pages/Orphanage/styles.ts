@@ -19,15 +19,16 @@ export const Container = styled.div`
   .orphanage-details {
     background: var(--card-background-color);
     /* border: 1px solid #d3e2e5; */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    margin: 64px auto;
+    margin: 0 auto;
     overflow: hidden;
     max-width: 700px;
     width: 100%;
 
     @media ${device.tablet} {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
       border-radius: 20px;
+      margin: 64px auto;
     }
 
     > img {

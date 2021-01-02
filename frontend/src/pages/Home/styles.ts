@@ -115,9 +115,9 @@ export const Button = styled(Link)`
   background-color: var(--button-color-actions);
   border-radius: 50%;
   display: flex;
-  height: 40px;
+  height: 48px;
   justify-content: center;
-  width: 40px;
+  width: 48px;
   transition: all 300ms ease;
   flex-shrink: 0;
 

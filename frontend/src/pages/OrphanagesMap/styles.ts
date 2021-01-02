@@ -20,6 +20,7 @@ export const Aside = styled.aside`
   background: var(--gradient-landing-page);
   display: flex;
   flex-direction: column;
+  height: 32vh;
   justify-content: space-between;
   padding: 32px;
   width: 100%;
@@ -31,11 +32,20 @@ export const Aside = styled.aside`
   }
 
   header {
+    svg {
+      animation: float 6s ease-in-out infinite;
+    }
+
     h2 {
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 800;
-      line-height: 32px;
+      line-height: 24px;
       margin-top: 16px;
+
+      @media ${device.tablet} {
+        font-size: 32px;
+        line-height: 32px;
+      }
 
       @media ${device.laptop} {
         margin-top: 64px;
@@ -47,15 +57,16 @@ export const Aside = styled.aside`
     p {
       line-height: 28px;
       margin-top: 24px;
-    }
+      display: none;
 
-    svg {
-      animation: float 6s ease-in-out infinite;
+      @media ${device.laptop} {
+        display: block;
+      }
     }
   }
 
   footer {
-    display: flex;
+    display: none;
     flex-direction: column;
     font-size: 18px;
     line-height: 28px;
@@ -63,16 +74,21 @@ export const Aside = styled.aside`
     strong {
       font-weight: 800;
     }
+
+    @media ${device.laptop} {
+      display: flex;
+    }
   }
 `;
 
 export const MapWrapper = styled.div`
   animation: 5000ms ease-out 0s 1 fadeIn;
-  height: 100%;
+  height: 68vh;
   width: 100%;
 
   @media ${device.laptop} {
     flex: 1;
+    height: 100%;
   }
 
   > div {
