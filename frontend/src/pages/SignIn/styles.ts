@@ -19,6 +19,7 @@ export const Container = styled.div`
     animation: 500ms ease-out 0s 1 slideInFromUp;
     background-color: var(--card-background-color);
     /* border: 1px solid #d3e2e5; */
+    height: 100%;
     margin: 0 auto;
     overflow: hidden;
     padding: 32px 16px;
@@ -27,6 +28,7 @@ export const Container = styled.div`
 
     @media ${device.tablet} {
       border-radius: 20px;
+      height: auto;
       padding: 64px 80px;
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
