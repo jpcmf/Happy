@@ -58,6 +58,10 @@ class OrphanagesRepository implements IOrphanagesRepository {
 
     return orphanage;
   }
+
+  public async save(orphanage: Orphanage): Promise<Orphanage> {
+    return this.ormRepository.save(orphanage);
+  }
 }
 
 export default OrphanagesRepository;

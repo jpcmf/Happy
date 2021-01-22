@@ -1,11 +1,12 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 
 import cors from 'cors';
 
 import express from 'express';
 import 'express-async-errors';
 
-import uploadConfig from '@config/upload';
+import oldUploadConfig from '@config/oldUpload';
 import errorHandler from '@shared/errors/handler';
 import routes from './routes';
 
@@ -18,7 +19,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static(uploadConfig.directory));
+app.use('/uploads', express.static(oldUploadConfig.directory));
+// app.use('/uploads', express.static(uploadConfig.uploadsFolder));
 app.use(logRequests);
 app.use(routes);
 app.use(errorHandler);

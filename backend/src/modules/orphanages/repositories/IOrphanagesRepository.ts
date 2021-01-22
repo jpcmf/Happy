@@ -5,4 +5,5 @@ export default interface IOrphanagesRepository {
   create(data: ICreateOrphanageDTO): Promise<Orphanage>;
   findAllOrphanages(): Promise<Orphanage[]>;
   findById(id: string): Promise<Orphanage | undefined>;
+  save(id: Orphanage): Promise<Orphanage>;
 }
