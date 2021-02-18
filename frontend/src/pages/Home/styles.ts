@@ -20,19 +20,19 @@ export const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  max-height: 650px;
+  max-height: 600px;
   max-width: 1300px;
   position: relative;
   width: 100%;
   background: url(${landingImg}) no-repeat bottom center;
   background-size: 50%;
 
-  padding: 0 32px 150px;
+  padding: 0 32px 168px;
 
   @media ${device.laptop} {
     align-items: flex-start;
-    background: url(${landingImg}) no-repeat 72% center;
-    background-size: 48%;
+    background: url(${landingImg}) no-repeat 68% -31px;
+    background-size: 570px;
     flex-direction: column;
     justify-content: space-between;
     padding: 0 32px;
