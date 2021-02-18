@@ -3,7 +3,7 @@ import { inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
-// import User from '@modules/users/infra/typeorm/entities/User';
+import User from '@modules/users/infra/typeorm/entities/User';
 import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
 import Image from '@modules/images/infra/typeorm/entities/Image';
 import IOrphanages from '../repositories/IOrphanagesRepository';
@@ -11,7 +11,8 @@ import IOrphanages from '../repositories/IOrphanagesRepository';
 interface IRequest {
   user_id: string;
   orphanage_id: string;
-  imageFilenames: Image;
+  imageFilenames: string;
+  // imageFilenames: Image;
 }
 
 class UpdateOrphanageImagesService {
@@ -35,7 +36,7 @@ class UpdateOrphanageImagesService {
 
     if (!user) {
       throw new AppError(
-        'Only authenticated users can change the avatar.',
+        'Only authenticated users can change the orphanages images.',
         401,
       );
     }
@@ -54,7 +55,6 @@ class UpdateOrphanageImagesService {
       // const orphangeImagesFileExists = await fs.promises.stat(
       //   orphanageImagesFilePath,
       // );
-
       // if (orphangeImagesFileExists) {
       //   await fs.promises.unlink(orphanageImagesFilePath);
       // }
@@ -63,7 +63,9 @@ class UpdateOrphanageImagesService {
 
     const filename = await this.storageProvider.saveFile(imageFilenames);
 
-    orphanage?.images = filename;
+    console.log(filename);
+
+    // orphanage?.images = filename;
 
     await this.orphanagesRepository.save(orphanage);
 

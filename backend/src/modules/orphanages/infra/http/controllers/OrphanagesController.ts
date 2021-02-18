@@ -27,13 +27,10 @@ class OrphanagesController {
     const createOrphanage = container.resolve(CreateOrphanageService);
 
     const requestImages = request.files as Express.Multer.File[];
-    console.log(requestImages, 'requestImages....');
 
     const images = requestImages.map(image => {
       return { path: image.filename };
     });
-
-    console.log(images, 'images....');
 
     const data = {
       name,

@@ -53,6 +53,7 @@ class Orphanage {
   })
   @JoinColumn({ name: 'orphanage_id' })
   images: Image[];
+  // images: string;
 
   @CreateDateColumn()
   created_at: Date;
