@@ -94,7 +94,7 @@ const Orphanage: React.FC = () => {
 
           <div className="orphanage-details-content">
             <h1>{orphanage.name}</h1>
-            <textarea>{orphanage.about}</textarea>
+            <textarea readOnly>{orphanage.about}</textarea>
 
             <div className="map-container">
               <Map
@@ -131,7 +131,7 @@ const Orphanage: React.FC = () => {
             <hr />
 
             <h2>Instruções para visita</h2>
-            <textarea>{orphanage.instructions}</textarea>
+            <textarea readOnly>{orphanage.instructions}</textarea>
 
             <div className="open-details">
               <div className="hour">
