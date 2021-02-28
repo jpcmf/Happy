@@ -23,6 +23,8 @@ orphanagesRouter.use(ensureAuthenticated);
 
 orphanagesRouter.post('/', orphanagesController.create);
 
+// orphanagesRouter.post('/', upload.single('file'), orphanagesController.create);
+
 orphanagesRouter.patch(
   '/images',
   upload.single('images'),

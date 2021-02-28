@@ -17,11 +17,11 @@ class Orphanage {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  orphanage_id: string;
+  // @PrimaryGeneratedColumn('uuid')
+  // orphanage_id: string;
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: 'orphanage_id' })
+  @JoinColumn({ name: 'id' })
   orphanage: User;
 
   @Column()
@@ -51,7 +51,7 @@ class Orphanage {
   @OneToMany(() => Image, image => image.orphanage, {
     cascade: ['insert', 'update'],
   })
-  @JoinColumn({ name: 'orphanage_id' })
+  @JoinColumn({ name: 'id' })
   images: Image[];
   // images: string;
 

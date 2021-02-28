@@ -12,8 +12,8 @@ export default class OrphanagesImagesController {
 
     const orphanage = await updateOrphanageImages.execute({
       user_id: req.user.id,
-      orphanage_id: '',
-      imageFilenames: '',
+      // orphanage_id: '',
+      // imageFilenames: '',
       // {
       //   id: '',
       //   path: '',
