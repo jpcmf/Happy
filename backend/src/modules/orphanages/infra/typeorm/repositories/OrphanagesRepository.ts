@@ -15,7 +15,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
 
   public async create({
     name,
-    orphanage_id,
+    // orphanage_id,
     latitude,
     longitude,
     about,
@@ -27,7 +27,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
   }: ICreateOrphanageDTO): Promise<Orphanage> {
     const orphanage = this.ormRepository.create({
       name,
-      orphanage_id,
+      // orphanage_id,
       latitude,
       longitude,
       about,
@@ -57,6 +57,10 @@ class OrphanagesRepository implements IOrphanagesRepository {
     });
 
     return orphanage;
+  }
+
+  public async save(orphanage: Orphanage): Promise<Orphanage> {
+    return this.ormRepository.save(orphanage);
   }
 }
 

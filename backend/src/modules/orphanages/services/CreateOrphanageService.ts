@@ -1,12 +1,14 @@
 import { inject, injectable } from 'tsyringe';
 
-import Orphanage from '../infra/typeorm/entities/Orphanage';
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 
+import Orphanage from '../infra/typeorm/entities/Orphanage';
 import IOrphanagesRepository from '../repositories/IOrphanagesRepository';
 
 interface IRequest {
+  id: string;
   name: string;
-  orphanage_id: string;
+  // orphanage_id: string;
   latitude: number;
   longitude: number;
   about: string;
@@ -24,11 +26,15 @@ class CreateOrphanageService {
   constructor(
     @inject('OrphanagesRepository')
     private orphanagesRepository: IOrphanagesRepository,
+
+    @inject('StorageProvider')
+    private storageProvider: IStorageProvider,
   ) {}
 
   public async execute({
+    id,
     name,
-    orphanage_id,
+    // orphanage_id,
     latitude,
     longitude,
     about,
@@ -40,7 +46,7 @@ class CreateOrphanageService {
   }: IRequest): Promise<Orphanage> {
     const orphanage = await this.orphanagesRepository.create({
       name,
-      orphanage_id,
+      // orphanage_id,
       latitude,
       longitude,
       about,
@@ -50,6 +56,20 @@ class CreateOrphanageService {
       open_on_weekends,
       images,
     });
+
+    // const orphanageId = await this.orphanagesRepository.findById(id);
+    // console.log('orphanageId.....', orphanageId);
+
+    const filename = await this.storageProvider.saveFile(images[0].path);
+    console.log('filename....', filename);
+
+    // orphanage.images = filename;
+
+    // console.log('passou');
+
+    if (orphanage) {
+      console.log('passou....', orphanage);
+    }
 
     return orphanage;
   }

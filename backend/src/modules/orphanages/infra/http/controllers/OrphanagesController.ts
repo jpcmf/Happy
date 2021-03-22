@@ -14,7 +14,7 @@ class OrphanagesController {
   public async create(request: Request, response: Response): Promise<Response> {
     const {
       name,
-      orphanage_id,
+      // orphanage_id,
       latitude,
       longitude,
       about,
@@ -27,13 +27,16 @@ class OrphanagesController {
     const createOrphanage = container.resolve(CreateOrphanageService);
 
     const requestImages = request.files as Express.Multer.File[];
+
     const images = requestImages.map(image => {
       return { path: image.filename };
     });
 
+    console.log(images);
+
     const data = {
       name,
-      orphanage_id,
+      // orphanage_id,
       latitude,
       longitude,
       about,
@@ -46,7 +49,7 @@ class OrphanagesController {
 
     const schema = Yup.object().shape({
       name: Yup.string().required(),
-      orphanage_id: Yup.string(),
+      // orphanage_id: Yup.string(),÷
       latitude: Yup.number().required(),
       longitude: Yup.number().required(),
       about: Yup.string().required().max(300),

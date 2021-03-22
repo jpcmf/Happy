@@ -107,7 +107,7 @@ export const Container = styled.div`
         color: var(--form-legend-text-color);
         display: flex;
         height: 100%;
-        height: 25vh;
+        min-height: 58px;
         line-height: 28px;
         margin-top: 32px;
         outline: none;
